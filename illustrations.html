@@ -49,6 +49,16 @@
     </div>
   </section>
 
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close">&#x2715;</button>
+    <button class="lightbox-prev"  id="lightbox-prev"  aria-label="Previous">&#x2039;</button>
+    <button class="lightbox-next"  id="lightbox-next"  aria-label="Next">&#x203A;</button>
+    <div class="lightbox-img-wrap">
+      <img id="lightbox-img" src="" alt="" />
+    </div>
+  </div>
+
   <!-- FOOTER -->
   <footer class="site-footer">
     <div class="footer-inner">
@@ -96,6 +106,46 @@
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
     }, { threshold: 0.12 });
     bentoItems.forEach(item => observer.observe(item));
+
+    // Lightbox
+    const lightbox   = document.getElementById('lightbox');
+    const lbImg      = document.getElementById('lightbox-img');
+    const lbClose    = document.getElementById('lightbox-close');
+    const lbPrev     = document.getElementById('lightbox-prev');
+    const lbNext     = document.getElementById('lightbox-next');
+    const images     = [...document.querySelectorAll('.bento-item img')];
+    let current      = 0;
+
+    function openLightbox(idx) {
+      current = idx;
+      lbImg.src = images[current].src;
+      lbImg.alt = images[current].alt;
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      lbPrev.style.display = images.length > 1 ? '' : 'none';
+      lbNext.style.display = images.length > 1 ? '' : 'none';
+    }
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function showPrev() { current = (current - 1 + images.length) % images.length; lbImg.src = images[current].src; lbImg.alt = images[current].alt; }
+    function showNext() { current = (current + 1) % images.length; lbImg.src = images[current].src; lbImg.alt = images[current].alt; }
+
+    images.forEach((img, i) => {
+      img.parentElement.style.cursor = 'zoom-in';
+      img.parentElement.addEventListener('click', () => openLightbox(i));
+    });
+    lbClose.addEventListener('click', closeLightbox);
+    lbPrev.addEventListener('click', (e) => { e.stopPropagation(); showPrev(); });
+    lbNext.addEventListener('click', (e) => { e.stopPropagation(); showNext(); });
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox || e.target === lbImg.parentElement) closeLightbox(); });
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape')     closeLightbox();
+      if (e.key === 'ArrowLeft')  showPrev();
+      if (e.key === 'ArrowRight') showNext();
+    });
 
     // Hamburger menu
     const hamburger = document.getElementById('nav-hamburger');
