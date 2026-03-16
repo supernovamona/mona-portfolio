@@ -278,10 +278,10 @@
     function unlock() {
       gate.style.display = 'none';
       locked.classList.add('unlocked');
-      sessionStorage.setItem('co_unlocked', '1');
+      sessionStorage.setItem('case_unlocked', '1');
     }
 
-    if (sessionStorage.getItem('co_unlocked') === '1') { unlock(); }
+    if (sessionStorage.getItem('case_unlocked') === '1') { unlock(); }
 
     document.getElementById('pw-submit').addEventListener('click', () => {
       if (pwInput.value === PW) { unlock(); }
