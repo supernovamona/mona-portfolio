@@ -949,7 +949,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   padding: 80px 40px;
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  gap: 100px;
 }
 
 .about-row {
