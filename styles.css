@@ -487,6 +487,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-size: 16px;
   color: var(--text);
 }
+.exp-promo {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--text-secondary, #888);
+  margin-top: 2px;
+}
 
 .exp-desc {
   font-family: var(--font-body);
