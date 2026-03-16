@@ -34,32 +34,20 @@
     </div>
   </section>
 
-  <!-- GALLERY — dark images first, light after -->
-  <div class="gallery-section">
-    <div class="gallery-scroll" id="gallery-main">
-      <div class="gallery-slide"><img src="illus-dark-1.png"   alt="Illustration — anime girl with long hair, dark palette" /></div>
-      <div class="gallery-slide"><img src="illus-dark-2.png"   alt="Illustration — anime figure in white coat, dark palette" /></div>
-      <div class="gallery-slide"><img src="illus-dark-3.png"   alt="Illustration — figure with red strings on black" /></div>
-      <div class="gallery-slide"><img src="illus-dark-4.png"   alt="Illustration — dark space scene with multiple figures" /></div>
-      <div class="gallery-slide"><img src="illus-dark-5.png"   alt="Illustration — panoramic dark banner with character" /></div>
-      <div class="gallery-slide"><img src="illus-dark-6.jpeg"  alt="Illustration — four illustrated panels, dark-bordered" /></div>
-      <div class="gallery-slide"><img src="illus-light-1.png"  alt="Illustration — rooftop scene in snow" /></div>
-      <div class="gallery-slide"><img src="illus-light-2.jpeg" alt="Illustration — The Life Game, teal and white" /></div>
-      <div class="gallery-slide"><img src="illus-light-3.png"  alt="Illustration — figure before jungle dinosaur mural" /></div>
+  <!-- GALLERY — bento grid -->
+  <section class="bento-section">
+    <div class="bento-grid">
+      <div class="bento-item"><img src="illus-dark-1.png"   alt="Illustration — anime girl with long hair, dark palette" /></div>
+      <div class="bento-item"><img src="illus-dark-2.png"   alt="Illustration — anime figure in white coat, dark palette" /></div>
+      <div class="bento-item"><img src="illus-dark-3.png"   alt="Illustration — figure with red strings on black" /></div>
+      <div class="bento-item bento-wide"><img src="illus-dark-4.png"   alt="Illustration — dark space scene with multiple figures" /></div>
+      <div class="bento-item"><img src="illus-dark-5.png"   alt="Illustration — panoramic dark banner with character" /></div>
+      <div class="bento-item bento-wide"><img src="illus-dark-6.jpeg"  alt="Illustration — four illustrated panels, dark-bordered" /></div>
+      <div class="bento-item"><img src="illus-light-1.png"  alt="Illustration — rooftop scene in snow" /></div>
+      <div class="bento-item"><img src="illus-light-2.jpeg" alt="Illustration — The Life Game, teal and white" /></div>
+      <div class="bento-item bento-wide"><img src="illus-light-3.png"  alt="Illustration — figure before jungle dinosaur mural" /></div>
     </div>
-    <!-- Dot indicators -->
-    <div class="gallery-dots" id="gallery-dots">
-      <span class="gallery-dot active"></span>
-      <span class="gallery-dot"></span>
-      <span class="gallery-dot"></span>
-      <span class="gallery-dot"></span>
-      <span class="gallery-dot"></span>
-      <span class="gallery-dot"></span>
-      <span class="gallery-dot"></span>
-      <span class="gallery-dot"></span>
-      <span class="gallery-dot"></span>
-    </div>
-  </div>
+  </section>
 
   <!-- FOOTER -->
   <footer class="site-footer">
@@ -102,46 +90,12 @@
       header.style.boxShadow = window.scrollY > 10 ? '0 2px 20px rgba(0,0,0,0.06)' : '';
     });
 
-    // Snap gallery — scale + opacity in/out effect + dot tracking
-    const scroll = document.getElementById('gallery-main');
-    const dots   = document.querySelectorAll('.gallery-dot');
-
-    function updateGallery() {
-      const slides   = scroll.querySelectorAll('.gallery-slide');
-      const slideW   = slides[0] ? slides[0].offsetWidth : scroll.clientWidth;
-      const viewCenter = scroll.scrollLeft + scroll.clientWidth / 2;
-
-      // Scale / opacity
-      slides.forEach(slide => {
-        const slideCenter = slide.offsetLeft + slideW / 2;
-        const dist  = Math.abs(viewCenter - slideCenter);
-        const ratio = Math.min(dist / scroll.clientWidth, 1);
-        const img   = slide.querySelector('img');
-        if (img) {
-          img.style.transform = `scale(${1 - ratio * 0.07})`;
-          img.style.opacity   = 1 - ratio * 0.5;
-        }
-      });
-
-      // Active dot — snap increments are exactly 1 slideW apart
-      const activeIdx = Math.round(scroll.scrollLeft / slideW);
-      dots.forEach((dot, i) => dot.classList.toggle('active', i === activeIdx));
-    }
-
-    scroll.addEventListener('scroll', updateGallery, { passive: true });
-    requestAnimationFrame(updateGallery);
-
-    // Convert vertical wheel to horizontal snap scroll
-    scroll.addEventListener('wheel', (e) => {
-      if (e.deltaY === 0) return;
-      e.preventDefault();
-      const slides = scroll.querySelectorAll('.gallery-slide');
-      const slideW = slides[0] ? slides[0].offsetWidth : scroll.clientWidth;
-      const dir = e.deltaY > 0 ? 1 : -1;
-      const current = Math.round(scroll.scrollLeft / slideW);
-      const target = Math.max(0, Math.min(slides.length - 1, current + dir));
-      scroll.scrollTo({ left: target * slideW, behavior: 'smooth' });
-    }, { passive: false });
+    // Bento grid — fade in items as they enter viewport
+    const bentoItems = document.querySelectorAll('.bento-item');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    bentoItems.forEach(item => observer.observe(item));
 
     // Hamburger menu
     const hamburger = document.getElementById('nav-hamburger');
