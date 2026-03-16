@@ -131,6 +131,18 @@
     scroll.addEventListener('scroll', updateGallery, { passive: true });
     requestAnimationFrame(updateGallery);
 
+    // Convert vertical wheel to horizontal snap scroll
+    scroll.addEventListener('wheel', (e) => {
+      if (e.deltaY === 0) return;
+      e.preventDefault();
+      const slides = scroll.querySelectorAll('.gallery-slide');
+      const slideW = slides[0] ? slides[0].offsetWidth : scroll.clientWidth;
+      const dir = e.deltaY > 0 ? 1 : -1;
+      const current = Math.round(scroll.scrollLeft / slideW);
+      const target = Math.max(0, Math.min(slides.length - 1, current + dir));
+      scroll.scrollTo({ left: target * slideW, behavior: 'smooth' });
+    }, { passive: false });
+
     // Hamburger menu
     const hamburger = document.getElementById('nav-hamburger');
     const siteNav = document.getElementById('site-nav');
