@@ -14,12 +14,15 @@
       <a href="index.html" class="logo" aria-label="Mona Li — Home">
         <img src="https://www.figma.com/api/mcp/asset/947082ce-adf1-4e95-b11e-48ca7e4f228c" alt="Mona Li" />
       </a>
-      <nav class="site-nav" aria-label="Primary navigation">
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
         <a href="index.html#my-work" class="nav-item">Work</a>
         <a href="illustrations.html" class="nav-item">Illustrations</a>
         <a href="about.html" class="nav-item active">About</a>
         <a href="https://drive.google.com/file/d/1sk3iVzcKw3EDI8vRr_XDA_gwezn6h-3E/view?usp=sharing" target="_blank" class="nav-item">Resume</a>
       </nav>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
@@ -130,6 +133,21 @@
     const header = document.getElementById('site-header');
     window.addEventListener('scroll', () => {
       header.style.boxShadow = window.scrollY > 10 ? '0 2px 20px rgba(0,0,0,0.06)' : '';
+    });
+    // Hamburger menu
+    const hamburger = document.getElementById('nav-hamburger');
+    const siteNav = document.getElementById('site-nav');
+    hamburger.addEventListener('click', () => {
+      const isOpen = siteNav.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen);
+    });
+    siteNav.querySelectorAll('.nav-item').forEach(item => {
+      item.addEventListener('click', () => {
+        siteNav.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', false);
+      });
     });
   </script>
 </body>
