@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mona Li — UX Designer</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo" aria-label="Mona Li — Home">
+        <img src="https://www.figma.com/api/mcp/asset/11804d4f-2827-48f8-95f4-57fef6a9653c" alt="Mona Li" />
+      </a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="#my-work" class="nav-item active" data-work-nav>Work</a>
+        <a href="illustrations.html" class="nav-item">Illustrations</a>
+        <a href="about.html" class="nav-item">About</a>
+        <a href="https://drive.google.com/file/d/1sk3iVzcKw3EDI8vRr_XDA_gwezn6h-3E/view?usp=sharing" target="_blank" class="nav-item">Resume</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-inner">
+      <div class="hero-bg"></div>
+      <h1>Hi, I'm Mona.</h1>
+      <div class="hero-text">
+        <p class="hero-subtitle">A Staff UX Designer architecting clarity for complex systems.</p>
+        <p class="hero-desc">I design data platforms and complex systems, translating backend complexity into tools people can actually use.</p>
+      </div>
+      <div class="hero-buttons">
+        <button class="btn-primary" onclick="scrollToWork()">
+          View My Work
+          <img src="https://www.figma.com/api/mcp/asset/e56fc200-542d-4e04-b368-e8d4a9d8fb6b" alt="" />
+        </button>
+        <a href="mailto:monali14520@gmail.com" class="btn-secondary">
+          Get in Touch
+          <img src="email-icon.svg" alt="" style="width:20px;height:20px;" />
+        </a>
+      </div>
+      <button class="scroll-btn" onclick="scrollToWork()" aria-label="Scroll to work">
+        <img src="https://www.figma.com/api/mcp/asset/90374bd0-a481-41d2-a69c-400b284762d1" alt="" />
+      </button>
+    </div>
+  </section>
+
+  <!-- MY WORK -->
+  <section id="my-work" class="work-section">
+    <div class="work-inner">
+      <div>
+        <div class="section-label">
+          <span class="section-label-mark" aria-hidden="true"></span>
+          <span class="section-label-text">MY WORK</span>
+        </div>
+        <h2>Projects that solve complex problems</h2>
+      </div>
+
+      <div class="projects-grid">
+        <!-- Card 1: Autonomous Reflections -->
+        <a href="autonomous-reflections.html" class="project-card">
+          <div class="card-img-wrap card-img-green">
+            <img src="https://www.figma.com/api/mcp/asset/8630a3ab-484e-4679-a830-0fbd30ba3202" alt="Autonomous Reflections project preview" />
+          </div>
+          <div class="card-body">
+            <h3>Autonomous Reflections</h3>
+            <p>Making performance tuning invisible by automatically optimizing queries.</p>
+            <div class="card-tags">
+              <span class="card-tag">System-level UX</span>
+              <span class="card-tag">Automation</span>
+              <span class="card-tag">Data Platforms</span>
+            </div>
+            <span class="card-btn">
+              View Project
+              <img src="https://www.figma.com/api/mcp/asset/e56fc200-542d-4e04-b368-e8d4a9d8fb6b" alt="" />
+            </span>
+          </div>
+        </a>
+
+        <!-- Card 2: Cloud Onboarding -->
+        <a href="cloud-onboarding.html" class="project-card">
+          <div class="card-img-wrap card-img-purple">
+            <img src="https://www.figma.com/api/mcp/asset/0b4742e8-9a8f-47af-a98e-8a1e27652739" alt="Cloud Onboarding project preview" />
+          </div>
+          <div class="card-body">
+            <h3>Cloud Onboarding Redesign</h3>
+            <p>Redesigning onboarding to unlock product-led growth and self-serve adoption.</p>
+            <div class="card-tags">
+              <span class="card-tag">Product UX</span>
+              <span class="card-tag">Onboarding</span>
+              <span class="card-tag">Cloud Platform</span>
+            </div>
+            <span class="card-btn">
+              View Project
+              <img src="https://www.figma.com/api/mcp/asset/e56fc200-542d-4e04-b368-e8d4a9d8fb6b" alt="" />
+            </span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="exp-section">
+    <div class="exp-inner">
+      <div>
+        <div class="section-label">
+          <span class="section-label-mark" aria-hidden="true"></span>
+          <span class="section-label-text">EXPERIENCE</span>
+        </div>
+        <h2>Where I've designed and the scope of my work</h2>
+      </div>
+
+      <div class="exp-list">
+        <div class="exp-row">
+          <div class="exp-date">2021 — Present</div>
+          <div class="exp-role-col">
+            <span class="exp-title">Staff Product Designer</span>
+            <span class="exp-company">Dremio</span>
+          </div>
+          <p class="exp-desc">I lead the design strategy for core platform and cloud experiences. My focus is on system-level challenges like automation, query performance, and AI-assisted workflows. I work closely with product and engineering teams to turn complex data infrastructure into intuitive user experiences.</p>
+        </div>
+
+        <div class="exp-row">
+          <div class="exp-date">2020 — 2021</div>
+          <div class="exp-role-col">
+            <span class="exp-title">Product Designer</span>
+            <span class="exp-company">Incorta</span>
+          </div>
+          <p class="exp-desc">I led the redesign of core analytics and dashboarding tools for enterprise users. During a major platform migration from Angular to React, I improved key workflows to help large business teams adopt the product more easily.</p>
+        </div>
+      </div>
+
+      <!-- Analyst callout box -->
+      <div class="analyst-box">
+        <div class="analyst-box-bg"></div>
+        <!-- Stacked notebooks illustration -->
+        <img src="notebooks.png" alt="" class="analyst-notebooks" aria-hidden="true" />
+        <div class="analyst-box-content">
+          <h3>I spent 4 years as a Data Analyst
+before moving into design.</h3>
+          <p>This is my secret weapon. I've spent thousands of hours writing SQL and wrestling with messy data. I know exactly where the pain points are because I've felt them myself. Today, that experience helps me design tools for data experts that actually speak their language.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-heading-row">
+          <h2 class="footer-heading">Lets create cool things together!</h2>
+          <div class="footer-socials">
+            <a href="https://www.linkedin.com/in/mona-li/?locale=en_US" target="_blank" class="social-btn" aria-label="LinkedIn">
+              <img src="https://www.figma.com/api/mcp/asset/41dd54f7-e084-4bb3-bc85-3de86c046390" alt="LinkedIn" />
+            </a>
+            <a href="https://dribbble.com/mona-li" target="_blank" class="social-btn" aria-label="Dribbble">
+              <img src="https://www.figma.com/api/mcp/asset/b7838e08-ab51-4443-86c5-19fd5e877573" alt="Dribbble" />
+            </a>
+            <a href="mailto:monali14520@gmail.com" class="social-btn" aria-label="Email">
+              <img src="email-icon.svg" alt="Email" />
+            </a>
+          </div>
+        </div>
+        <div class="footer-cta-row">
+          <a href="mailto:monali14520@gmail.com" class="footer-cta">
+            Get in Touch
+            <img src="email-icon.svg" alt="" style="width:20px;height:20px;" />
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2026 Mona Li. All rights reserved.</p>
+      </div>
+
+      <button class="scroll-up-btn" onclick="scrollToTop()" aria-label="Scroll to top">
+        <img src="https://www.figma.com/api/mcp/asset/90374bd0-a481-41d2-a69c-400b284762d1" alt="" />
+      </button>
+    </div>
+  </footer>
+
+  <script>
+    function scrollToWork() {
+      document.getElementById('my-work').scrollIntoView({behavior:'smooth'});
+    }
+    function scrollToTop() {
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+    // Header shadow on scroll
+    const hdr = document.getElementById('site-header');
+    window.addEventListener('scroll', () => {
+      hdr.style.boxShadow = window.scrollY > 10 ? '0 2px 20px rgba(0,0,0,0.06)' : '';
+    });
+    // Work nav: if on this page scroll, otherwise navigate
+    document.querySelector('[data-work-nav]').addEventListener('click', e => {
+      e.preventDefault();
+      scrollToWork();
+    });
+  </script>
+</body>
+</html>

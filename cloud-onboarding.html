@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cloud Onboarding Redesign — Mona Li</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <img src="https://www.figma.com/api/mcp/asset/80dc29b1-cec6-442f-a28c-1f244a38b37e" alt="Mona Li" />
+      </a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="index.html#my-work" class="nav-item">Work</a>
+        <a href="illustrations.html" class="nav-item">Illustrations</a>
+        <a href="about.html" class="nav-item">About</a>
+        <a href="https://drive.google.com/file/d/1sk3iVzcKw3EDI8vRr_XDA_gwezn6h-3E/view?usp=sharing" target="_blank" class="nav-item">Resume</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- CASE HERO -->
+    <section class="case-hero">
+      <div class="case-hero-inner">
+        <p class="case-meta-label">Case Study · Dremio · 2025–2026</p>
+        <h1 class="case-hero-title">Cloud Onboarding Redesign</h1>
+        <p class="case-hero-subtitle">Redesigning onboarding to unlock product-led growth and self-serve adoption.</p>
+
+        <div class="case-hero-body">
+          <p>I redesigned the onboarding experience so users could start using Dremio Cloud in minutes without AWS setup. By simplifying project creation and offering flexible paths to explore data, the redesign significantly improved activation and early engagement.</p>
+        </div>
+
+        <div class="case-meta-row">
+          <div class="case-meta-role">
+            <span class="case-meta-key">My Role</span>
+            <span class="case-meta-val">Sole designer on a 3-month redesign, working with 1 PM and a 10+ engineering team. Defined the end-to-end experience from sign-up to first value, with a focus on minimizing time-to-wow.</span>
+          </div>
+          <div class="case-meta-details">
+            <div class="case-meta-item">
+              <span class="case-meta-key">Team</span>
+              <span class="case-meta-val">1 PM, Marketing Team, Engineering</span>
+            </div>
+            <div class="case-meta-item">
+              <span class="case-meta-key">Duration</span>
+              <span class="case-meta-val">3 months</span>
+            </div>
+            <div class="case-meta-item">
+              <span class="case-meta-key">Scope</span>
+              <span class="case-meta-val">PLG, Onboarding, Design</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CASE LAYOUT: TOC + CONTENT -->
+    <div class="case-layout">
+      <aside class="case-toc" id="case-toc">
+        <p class="toc-label">Contents</p>
+        <nav class="toc-nav">
+          <a href="#result" class="toc-item active" data-section="result">The Result</a>
+          <a href="#problem" class="toc-item" data-section="problem">The Problem</a>
+          <a href="#opportunity" class="toc-item" data-section="opportunity">The Opportunity</a>
+          <a href="#strategy" class="toc-item" data-section="strategy">The Strategy</a>
+          <a href="#experience" class="toc-item" data-section="experience">The Experience</a>
+          <a href="#iteration" class="toc-item" data-section="iteration">Iteration and Discovery</a>
+        </nav>
+      </aside>
+
+      <div class="case-content">
+
+        <!-- THE RESULT -->
+        <section class="case-section" id="result">
+          <p class="section-eyebrow">The Result</p>
+          <h2 class="section-heading">Higher activation and faster access to the product</h2>
+          <div class="section-body">
+            <p>The redesigned onboarding significantly reduced the gap between signup intent and product access.</p>
+            <p>Activation improved from <strong>under 20%</strong> to <strong>over 70%</strong>. Within the first month after launch, 1,211 users clicked sign up and 879 successfully landed in the product homepage.</p>
+          </div>
+          <div class="case-image-block shadow-img">
+            <img src="https://www.figma.com/api/mcp/asset/fb9b7889-765b-45ac-ba57-46dc678e0927" alt="Onboarding activation results" />
+          </div>
+        </section>
+
+        <!-- THE PROBLEM -->
+        <section class="case-section" id="problem">
+          <p class="section-eyebrow">The Problem</p>
+          <h2 class="section-heading">Onboarding required infrastructure access</h2>
+          <div class="section-body">
+            <p>The original onboarding required users to deploy a CloudFormation template in their own AWS account. This required elevated permissions that most data analysts did not have.</p>
+            <p>Many users dropped off before completing setup, and those who did often faced long provisioning times. The result was a large gap between signup intent and actually reaching the product.</p>
+          </div>
+          <div class="case-image-block shadow-img rounded-img">
+            <img src="https://www.figma.com/api/mcp/asset/bac38ed2-9023-45b7-8493-274ac9d6a039" alt="Original complex onboarding form" />
+          </div>
+        </section>
+
+        <!-- THE OPPORTUNITY -->
+        <section class="case-section" id="opportunity">
+          <p class="section-eyebrow">The Opportunity</p>
+          <h2 class="section-heading">Designing for PLG: Removing Friction at Every Step</h2>
+          <div class="section-body">
+            <p>The team recognized that onboarding friction was limiting product adoption. If users could not reach the product quickly, they could not experience its value.</p>
+            <p>This prompted us to rethink a key assumption: users should be able to explore the platform before dealing with infrastructure setup.</p>
+          </div>
+        </section>
+
+        <!-- THE STRATEGY -->
+        <section class="case-section" id="strategy">
+          <p class="section-eyebrow">The Strategy</p>
+          <h2 class="section-heading">From infrastructure setup to product experience</h2>
+          <p class="section-body">We redesigned onboarding around a simple goal: let users reach the product quickly and start exploring. Key changes included:</p>
+
+          <div class="result-callouts">
+            <div class="result-callout">
+              <h3>Serverless project setup</h3>
+              <p>Users only provide basic information such as project name and region. A project is automatically created and users can enter the platform in about 30 seconds.</p>
+            </div>
+            <div class="result-callout">
+              <h3>Immediate product access</h3>
+              <p>Provisioning continues in the background while users can already explore the interface instead of waiting on a loading screen.</p>
+            </div>
+            <div class="result-callout">
+              <h3>Two clear onboarding paths</h3>
+              <p>Users can either bring their own data or explore the platform with sample data using AI.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- THE EXPERIENCE -->
+        <section class="case-section" id="experience">
+          <p class="section-eyebrow">The Experience</p>
+          <h2 class="section-heading">Helping users start exploring immediately</h2>
+
+          <h3 class="sub-heading">A new home page for getting started</h3>
+          <p class="section-body">We introduced a new home page that helps users quickly understand how to begin using the platform. The page presents two clear starting points: add your own data or explore with sample data, reducing the friction of figuring out where to start.</p>
+
+          <div class="case-image-block shadow-img rounded-img">
+            <img src="https://www.figma.com/api/mcp/asset/dcd1c36f-a497-430f-9e0e-91fbf02ba1a3" alt="New home page for getting started" />
+          </div>
+
+          <h3 class="sub-heading">Simplified data onboarding</h3>
+          <p class="section-body">The Add Data experience combines file uploads and external data connections into a single entry point. Previously these flows were separated, which often confused new users. The new design makes it easier for users to bring their data into the platform.</p>
+
+          <div class="case-image-block shadow-img rounded-img">
+            <img src="https://www.figma.com/api/mcp/asset/3e10658e-bbd7-42b8-ad48-7955678aec92" alt="Simplified data upload interface" />
+          </div>
+
+          <h3 class="sub-heading">AI-guided exploration</h3>
+          <p class="section-body">For users starting with sample data, we introduced a guided experience powered by the AI agent. Instead of exploring independently, users can ask questions and see how the system analyzes and visualizes data, helping them quickly understand the platform's capabilities.</p>
+
+          <div class="case-image-block shadow-img">
+            <img src="https://www.figma.com/api/mcp/asset/b44c185e-4b87-4069-8dd7-493ef63028be" alt="AI-guided exploration interface" />
+          </div>
+        </section>
+
+        <!-- ITERATION AND DISCOVERY -->
+        <section class="case-section" id="iteration">
+          <p class="section-eyebrow">Iteration and Discovery</p>
+          <h2 class="section-heading">Validating Decisions Through Testing</h2>
+          <p class="section-body">User testing revealed that many users wanted to try Polaris Catalog, but did not realize that our catalog product was Polaris. We made the branding more visible and redesigned the data section to surface Open Catalog as a clearer entry point.</p>
+
+          <div class="case-image-block shadow-img">
+            <img src="https://www.figma.com/api/mcp/asset/b9990926-cd5e-4d73-af31-29d0ccd49cb4" alt="Iteration based on user testing" />
+          </div>
+
+          <div class="takeaway-box">
+            <h4>What I Took Away</h4>
+            <p>This project reinforced an important lesson: the biggest barrier to adoption was not product capability, but the friction of getting started.</p>
+            <p>By removing infrastructure requirements and focusing on immediate product experience, we made it much easier for users to explore the platform and discover its value.</p>
+          </div>
+
+          <h3 class="sub-heading">What's Next</h3>
+          <p class="section-body">Activation has improved significantly, but the next challenge is closing the gap between landing on the product and executing a first query. We're focused on shortening the path to that first meaningful interaction, helping users move from exploration to real insight faster.</p>
+        </section>
+
+      </div><!-- end case-content -->
+    </div><!-- end case-layout -->
+  </main>
+
+  <!-- NEXT PROJECT -->
+  <div class="next-project-bar">
+    <div class="next-project-inner">
+      <span class="next-project-label">Next Project</span>
+      <a href="autonomous-reflections.html" class="next-project-link">
+        <h3>Autonomous Reflections</h3>
+        <img src="https://www.figma.com/api/mcp/asset/e56fc200-542d-4e04-b368-e8d4a9d8fb6b" alt="" />
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // Header shadow on scroll
+    const header = document.getElementById('site-header');
+    window.addEventListener('scroll', () => {
+      header.style.boxShadow = window.scrollY > 10 ? '0 2px 20px rgba(0,0,0,0.06)' : '';
+    });
+
+    // TOC IntersectionObserver
+    const sections = document.querySelectorAll('.case-section[id]');
+    const tocItems = document.querySelectorAll('.toc-item');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          tocItems.forEach(item => {
+            item.classList.toggle('active', item.getAttribute('href') === '#' + id);
+          });
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+
+    sections.forEach(s => observer.observe(s));
+
+    // TOC smooth scroll
+    tocItems.forEach(item => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector(item.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Autonomous Reflections — Mona Li</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <img src="https://www.figma.com/api/mcp/asset/47270234-e0f4-424f-8d17-6e438b662299" alt="Mona Li" />
+      </a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="index.html#my-work" class="nav-item">Work</a>
+        <a href="illustrations.html" class="nav-item">Illustrations</a>
+        <a href="about.html" class="nav-item">About</a>
+        <a href="https://drive.google.com/file/d/1sk3iVzcKw3EDI8vRr_XDA_gwezn6h-3E/view?usp=sharing" target="_blank" class="nav-item">Resume</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- CASE HERO -->
+    <section class="case-hero">
+      <div class="case-hero-inner">
+        <p class="case-meta-label">Case Study · Dremio · 2023–2024</p>
+        <h1 class="case-hero-title">Autonomous Reflections</h1>
+        <p class="case-hero-subtitle">Making performance tuning invisible by automatically optimizing queries.</p>
+
+        <div class="case-hero-body">
+          <p>I designed a system that automatically improves query performance by analyzing how users query their data. The goal was simple: users should get faster queries without manually configuring reflections.</p>
+        </div>
+
+        <div class="case-meta-row">
+          <div class="case-meta-role">
+            <span class="case-meta-key">My Role</span>
+            <span class="case-meta-val">Sole designer on a 6-month 0→1 initiative. Defined the automation model, drove alignment between PM and platform engineering on trust and transparency tradeoffs, and established design patterns for system-driven features across the product.</span>
+          </div>
+          <div class="case-meta-details">
+            <div class="case-meta-item">
+              <span class="case-meta-key">Team</span>
+              <span class="case-meta-val">1 PM, Query Execution Team</span>
+            </div>
+            <div class="case-meta-item">
+              <span class="case-meta-key">Duration</span>
+              <span class="case-meta-val">6 months</span>
+            </div>
+            <div class="case-meta-item">
+              <span class="case-meta-key">Scope</span>
+              <span class="case-meta-val">Strategy, Research, Design</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CASE LAYOUT: TOC + CONTENT -->
+    <div class="case-layout">
+      <!-- LEFT SIDEBAR TOC -->
+      <aside class="case-toc" id="case-toc">
+        <p class="toc-label">Contents</p>
+        <nav class="toc-nav">
+          <a href="#result" class="toc-item active" data-section="result">The Result</a>
+          <a href="#friction" class="toc-item" data-section="friction">The Friction</a>
+          <a href="#challenge" class="toc-item" data-section="challenge">The Real Challenge</a>
+          <a href="#strategy" class="toc-item" data-section="strategy">The Strategy</a>
+          <a href="#impact" class="toc-item" data-section="impact">The Impact</a>
+        </nav>
+      </aside>
+
+      <!-- MAIN CONTENT -->
+      <div class="case-content">
+
+        <!-- THE RESULT -->
+        <section class="case-section" id="result">
+          <p class="section-eyebrow">The Result</p>
+          <h2 class="section-heading">Real Performance Gains in Production</h2>
+          <p class="section-body">This system is now running in production and delivering measurable value.</p>
+
+          <div class="result-callouts">
+            <div class="result-callout">
+              <h3>Time Recovered</h3>
+              <p>Each project saves about <strong>4 hours</strong> of query runtime every week by automatically accelerating common queries.</p>
+            </div>
+            <div class="result-callout">
+              <h3>Seamless Adoption</h3>
+              <p>Existing users moved from manual reflection setup to automation without changing their workflow.</p>
+            </div>
+            <div class="result-callout">
+              <h3>Operational Efficiency</h3>
+              <p>Teams no longer need to monitor slow queries or tune reflections manually. The system handles optimization in the background.</p>
+            </div>
+          </div>
+
+          <div class="case-image-block shadow-img">
+            <img src="real-performance-gains.png" alt="Autonomous Reflections dashboard" />
+          </div>
+        </section>
+
+        <!-- THE FRICTION -->
+        <section class="case-section" id="friction">
+          <p class="section-eyebrow">The Friction</p>
+          <h2 class="section-heading">Breaking the Expertise Bottleneck</h2>
+          <div class="section-body">
+            <p>Reflections can greatly improve query performance, but configuring them is difficult.<br>Users need to decide:</p>
+            <ul>
+              <li>which datasets to optimize</li>
+              <li>which fields to include</li>
+              <li>how reflections should evolve over time</li>
+            </ul>
+            <p>Most users do not have the expertise to make these decisions. Many teams rely on experts to configure reflections, while others avoid using them.</p>
+          </div>
+
+          <!-- Comparison Table -->
+          <div class="comparison-table">
+            <table>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Reflections</th>
+                  <th class="dim">MVs</th>
+                  <th class="dim">Indexes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Stores precomputed data for fast read access</td>
+                  <td><img src="https://www.figma.com/api/mcp/asset/a78c5ce4-27b5-4d62-bc72-752ef5bf16af" alt="✓" class="table-icon" /></td>
+                  <td><img src="https://www.figma.com/api/mcp/asset/a78c5ce4-27b5-4d62-bc72-752ef5bf16af" alt="✓" class="table-icon" /></td>
+                  <td><img src="https://www.figma.com/api/mcp/asset/a78c5ce4-27b5-4d62-bc72-752ef5bf16af" alt="✓" class="table-icon" /></td>
+                </tr>
+                <tr>
+                  <td>Stored as attribute of existing objects (Tables/Views)</td>
+                  <td><img src="https://www.figma.com/api/mcp/asset/a78c5ce4-27b5-4d62-bc72-752ef5bf16af" alt="✓" class="table-icon" /></td>
+                  <td><img src="https://www.figma.com/api/mcp/asset/1290d11d-e809-4e94-bdec-9cd212af0aa5" alt="✗" class="table-icon x-icon" /></td>
+                  <td><img src="https://www.figma.com/api/mcp/asset/a78c5ce4-27b5-4d62-bc72-752ef5bf16af" alt="✓" class="table-icon" /></td>
+                </tr>
+                <tr>
+                  <td>Transparently used in queries without modification</td>
+                  <td><img src="https://www.figma.com/api/mcp/asset/a78c5ce4-27b5-4d62-bc72-752ef5bf16af" alt="✓" class="table-icon" /></td>
+                  <td><img src="https://www.figma.com/api/mcp/asset/1290d11d-e809-4e94-bdec-9cd212af0aa5" alt="✗" class="table-icon x-icon" /></td>
+                  <td><img src="https://www.figma.com/api/mcp/asset/1290d11d-e809-4e94-bdec-9cd212af0aa5" alt="✗" class="table-icon x-icon" /></td>
+                </tr>
+                <tr>
+                  <td>Simplify query plans and reduce planning time</td>
+                  <td><img src="https://www.figma.com/api/mcp/asset/a78c5ce4-27b5-4d62-bc72-752ef5bf16af" alt="✓" class="table-icon" /></td>
+                  <td><img src="https://www.figma.com/api/mcp/asset/a78c5ce4-27b5-4d62-bc72-752ef5bf16af" alt="✓" class="table-icon" /></td>
+                  <td><img src="https://www.figma.com/api/mcp/asset/1290d11d-e809-4e94-bdec-9cd212af0aa5" alt="✗" class="table-icon x-icon" /></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- THE REAL CHALLENGE -->
+        <section class="case-section" id="challenge">
+          <p class="section-eyebrow">The Real Challenge</p>
+          <h2 class="section-heading">The Trust Gap</h2>
+          <div class="section-body">
+            <p>Users are often hesitant to let an automated system modify their data infrastructure.</p>
+            <p>Because reflections directly affect query execution, teams want to understand what changes are happening and why before allowing the system to operate automatically.</p>
+            <p>Without addressing this trust gap, full automation would be difficult to adopt.</p>
+          </div>
+
+          <div class="blockquote-box">
+            <p>How might we improve query performance without asking users to configure reflections at all?</p>
+          </div>
+
+          <div class="case-image-block shadow-img">
+            <img src="trust-gap.png" alt="Early exploration of improved UI — abandoned" />
+            <p class="img-caption">*Some explorations of prettier UI. Abandoned, of course.</p>
+          </div>
+        </section>
+
+        <!-- THE STRATEGY -->
+        <section class="case-section" id="strategy">
+          <p class="section-eyebrow">The Strategy</p>
+          <h2 class="section-heading">From Manual Configuration to Autonomous Optimization</h2>
+
+          <h3 class="sub-heading">Behavior-Driven Optimization</h3>
+          <div class="section-body">
+            <p>The system analyzes query history to understand how users access their data.</p>
+            <p>By detecting frequently queried entities and fields, it can determine where reflections will have the biggest impact.</p>
+            <p>This allows the platform to continuously optimize itself based on real usage patterns.</p>
+          </div>
+
+          <div class="case-image-block shadow-img">
+            <img src="https://www.figma.com/api/mcp/asset/ab3d21a4-8fd3-4bad-bc07-24c8374a663d" alt="Behavior-driven optimization diagram" />
+          </div>
+
+          <h3 class="sub-heading">A Path to Automation</h3>
+          <p class="section-body">To make automation easier to adopt, I designed two modes.</p>
+
+          <div class="two-modes">
+            <div class="mode-card">
+              <h4>Recommendation Mode</h4>
+              <p>The system suggests reflections based on query history. Users can review and apply them with one click.</p>
+            </div>
+            <div class="mode-card">
+              <h4>Autonomous Mode</h4>
+              <p>Once users trust the system, they can enable full automation. Reflections are then created and maintained automatically.</p>
+            </div>
+          </div>
+
+          <div class="case-image-block shadow-img">
+            <img src="https://www.figma.com/api/mcp/asset/5e108f40-a66c-48a8-9329-0a1a1baedbc8" alt="Recommendation mode showing expected impact" />
+            <p class="img-caption">Show recommendations with the expected impact of each reflection to encourage users to enable them.</p>
+          </div>
+
+          <h3 class="sub-heading">Showing the Impact</h3>
+          <div class="section-body">
+            <p>Automation only works if users can see what it is doing.</p>
+            <p>I designed dashboards that show which reflections were created and how query performance improved over time. This helps users understand the value and build trust in the system.</p>
+          </div>
+
+          <div class="case-image-block shadow-img">
+            <img src="https://www.figma.com/api/mcp/asset/59b562f2-0f80-40f2-ac2d-37460118dcb4" alt="Impact dashboard" />
+          </div>
+        </section>
+
+        <!-- THE IMPACT -->
+        <section class="case-section" id="impact">
+          <p class="section-eyebrow">The Impact</p>
+          <h2 class="section-heading">Designing for Automation</h2>
+          <p class="section-body"><strong>Nearly 70%</strong> of cloud customers wanted to adopt the feature right after announcement. We turned a task that took experts weeks into something that runs in the background. Teams without dedicated performance engineers now get query acceleration on par with companies that invest heavily in manual tuning.</p>
+
+          <div class="takeaway-box">
+            <h4>What I Took Away</h4>
+            <p>The biggest challenge was not the technology. It was helping users trust automation.</p>
+            <p>By creating a clear path from recommendations to full automation, we turned reflections from a complex expert feature into a system that optimizes itself.</p>
+          </div>
+
+          <h3 class="sub-heading">What's Next</h3>
+          <p class="section-body">We're making refreshes more efficient and reducing resource costs for large-scale deployments. The team is also expanding support for additional file formats beyond Iceberg and JSON.</p>
+        </section>
+
+      </div><!-- end case-content -->
+    </div><!-- end case-layout -->
+  </main>
+
+  <!-- NEXT PROJECT -->
+  <div class="next-project-bar">
+    <div class="next-project-inner">
+      <span class="next-project-label">Next Project</span>
+      <a href="cloud-onboarding.html" class="next-project-link">
+        <h3>Cloud Onboarding Redesign</h3>
+        <img src="https://www.figma.com/api/mcp/asset/e56fc200-542d-4e04-b368-e8d4a9d8fb6b" alt="" />
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // Header shadow on scroll
+    const header = document.getElementById('site-header');
+    window.addEventListener('scroll', () => {
+      header.style.boxShadow = window.scrollY > 10 ? '0 2px 20px rgba(0,0,0,0.06)' : '';
+    });
+
+    // TOC IntersectionObserver
+    const sections = document.querySelectorAll('.case-section[id]');
+    const tocItems = document.querySelectorAll('.toc-item');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          tocItems.forEach(item => {
+            item.classList.toggle('active', item.getAttribute('href') === '#' + id);
+          });
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+
+    sections.forEach(s => observer.observe(s));
+
+    // TOC smooth scroll
+    tocItems.forEach(item => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector(item.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
+</body>
+</html>
