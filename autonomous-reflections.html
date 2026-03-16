@@ -104,6 +104,26 @@
           </div>
         </section>
 
+        <!-- PASSWORD GATE -->
+        <div class="pw-gate" id="pw-gate">
+          <div class="pw-gate-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="0"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+          </div>
+          <h3>The rest of this case study is password protected</h3>
+          <p>Enter the password to read the full process.</p>
+          <div class="pw-form">
+            <input type="password" class="pw-input" id="pw-input" placeholder="Password" autocomplete="off" />
+            <button class="pw-submit" id="pw-submit">Unlock</button>
+          </div>
+          <p class="pw-error" id="pw-error">Incorrect password. Try again.</p>
+        </div>
+
+        <!-- LOCKED CONTENT -->
+        <div class="locked-content" id="locked-content">
+
         <!-- THE FRICTION -->
         <section class="case-section" id="friction">
           <p class="section-eyebrow">The Friction</p>
@@ -241,6 +261,8 @@
           <p class="section-body">We're making refreshes more efficient and reducing resource costs for large-scale deployments. The team is also expanding support for additional file formats beyond Iceberg and JSON.</p>
         </section>
 
+        </div><!-- end locked-content -->
+
       </div><!-- end case-content -->
     </div><!-- end case-layout -->
   </main>
@@ -304,6 +326,28 @@
         hamburger.setAttribute('aria-expanded', false);
       });
     });
+
+    // Password gate
+    const PW = 'supernova';
+    const gate    = document.getElementById('pw-gate');
+    const locked  = document.getElementById('locked-content');
+    const pwInput = document.getElementById('pw-input');
+    const pwError = document.getElementById('pw-error');
+
+    function unlock() {
+      gate.style.display = 'none';
+      locked.classList.add('unlocked');
+      sessionStorage.setItem('ar_unlocked', '1');
+    }
+
+    if (sessionStorage.getItem('ar_unlocked') === '1') { unlock(); }
+
+    document.getElementById('pw-submit').addEventListener('click', () => {
+      if (pwInput.value === PW) { unlock(); }
+      else { pwError.classList.add('visible'); pwInput.value = ''; pwInput.focus(); }
+    });
+    pwInput.addEventListener('keydown', e => { if (e.key === 'Enter') document.getElementById('pw-submit').click(); });
+    pwInput.addEventListener('input',   () => pwError.classList.remove('visible'));
   </script>
 </body>
 </html>
