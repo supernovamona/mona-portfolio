@@ -1202,6 +1202,16 @@ img.analyst-notebooks {
 .lightbox-next { right: 20px; }
 .lightbox-prev:hover,
 .lightbox-next:hover { background: rgba(255,255,255,0.22); }
+.lb-arrow {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid #fff;
+  border-right: 2px solid #fff;
+  flex-shrink: 0;
+}
+.lb-arrow-left  { transform: rotate(-135deg) translate(-1px, 1px); }
+.lb-arrow-right { transform: rotate(45deg)   translate(-1px, 1px); }
 
 /* ===== MOBILE RESPONSIVE ===== */
 @media (max-width: 768px) {
