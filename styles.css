@@ -894,7 +894,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .blockquote-box { background: rgba(20,20,20,0.02); border-left: 3px solid var(--text); padding: 48px 43px; margin: 28px 0; }
 .blockquote-box p { font-family: var(--font-heading); font-size: 21px; font-weight: 700; line-height: 1.5; color: var(--text); }
 
-.takeaway-box { background: rgba(20,20,20,0.02); border-left: 3px solid var(--text); padding: 48px 40px; margin: 32px 0; display: flex; flex-direction: column; gap: 24px; }
+.takeaway-box { background: rgba(20,20,20,0.02); border-left: 3px solid var(--text); padding: 48px 40px; margin: 72px 0 32px; display: flex; flex-direction: column; gap: 24px; }
 .takeaway-box h4 { font-family: var(--font-heading); font-size: 18px; font-weight: 700; }
 .takeaway-box p { font-family: var(--font-body); font-size: 16px; color: rgba(20,20,20,0.75); line-height: 1.7; }
 
@@ -1505,4 +1505,69 @@ img.analyst-notebooks {
 @media (max-width: 768px) {
   .pw-gate { padding: 60px 20px 80px; }
   .pw-input { width: 160px; }
+}
+
+/* ===== MICRO ANIMATIONS ===== */
+
+/* Scroll fade-up */
+.fade-up {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero entrance — CSS keyframe, no JS needed */
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero h1 {
+  animation: heroFadeUp 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.05s both;
+}
+.hero .hero-text {
+  animation: heroFadeUp 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.22s both;
+}
+.hero .hero-buttons {
+  animation: heroFadeUp 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s both;
+}
+.hero .scroll-btn {
+  animation: heroFadeUp 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.55s both;
+}
+
+/* About hero entrance */
+.about-hero-photo {
+  animation: heroFadeUp 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.05s both;
+}
+.about-hero-text {
+  animation: heroFadeUp 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s both;
+}
+
+/* Card image subtle zoom on hover */
+.card-img-wrap img {
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.project-card:hover .card-img-wrap img {
+  transform: scale(1.04);
+}
+
+/* Bento item image zoom on hover */
+.bento-item {
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.bento-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.18);
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .fade-up { opacity: 1; transform: none; transition: none; }
+  .hero h1, .hero .hero-text, .hero .hero-buttons, .hero .scroll-btn,
+  .about-hero-photo, .about-hero-text { animation: none; }
 }
