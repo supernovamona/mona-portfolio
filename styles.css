@@ -663,7 +663,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transition: background var(--transition), transform var(--transition);
 }
 .scroll-up-btn:hover { background: #ececec; transform: translateY(-2px); }
-.scroll-up-btn img { width: 24px; height: 24px; object-fit: contain; transform: rotate(180deg); }
+.scroll-up-btn img { width: 24px; height: 24px; object-fit: contain; }
 
 /* ===== CASE STUDY PAGES ===== */
 .case-hero {
