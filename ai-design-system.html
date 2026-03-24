@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI-Powered Design System — Mona Li</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <img src="logo.svg" alt="Mona Li" />
+      </a>
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+        <a href="index.html#my-work" class="nav-item">Work</a>
+        <a href="illustrations.html" class="nav-item">Illustrations</a>
+        <a href="about.html" class="nav-item">About</a>
+        <a href="https://drive.google.com/file/d/1i2DDwByd_LL00KW6QtQhn_m_IWqm0XyB/view?usp=sharing" target="_blank" class="nav-item">Resume</a>
+      </nav>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- CASE HERO -->
+    <section class="case-hero">
+      <div class="case-hero-inner">
+        <p class="case-meta-label">Case Study · Dremio · 2026 – Ongoing</p>
+        <h1 class="case-hero-title">AI-Powered Design System</h1>
+        <p class="case-hero-subtitle">I built a system that lets anyone on the team generate on-brand prototypes with AI. Prototyping went from weeks to hours.</p>
+
+        <div class="case-meta-row">
+          <div class="case-meta-role">
+            <span class="case-meta-key">My Role</span>
+            <span class="case-meta-val">Sole designer on a 0→1 initiative. Defined the strategy, made the key sequencing decisions, and built the architecture that opened prototyping up to the whole team.</span>
+          </div>
+          <div class="case-meta-details">
+            <div class="case-meta-item">
+              <span class="case-meta-key">Team</span>
+              <span class="case-meta-val">PM, Engineering, Cross-functional stakeholders</span>
+            </div>
+            <div class="case-meta-item">
+              <span class="case-meta-key">Duration</span>
+              <span class="case-meta-val">4 weeks to launch, ongoing</span>
+            </div>
+            <div class="case-meta-item">
+              <span class="case-meta-key">Scope</span>
+              <span class="case-meta-val">Design Systems, AI Tooling, Prototyping Infrastructure</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CASE LAYOUT: TOC + CONTENT -->
+    <div class="case-layout">
+      <aside class="case-toc" id="case-toc">
+        <p class="toc-label">Contents</p>
+        <nav class="toc-nav">
+          <a href="#result"    class="toc-item active" data-section="result">The Result</a>
+          <a href="#problem"   class="toc-item" data-section="problem">The Problem</a>
+          <a href="#challenge" class="toc-item" data-section="challenge">The Real Challenge</a>
+          <a href="#strategy"  class="toc-item" data-section="strategy">The Strategy</a>
+          <a href="#together"  class="toc-item" data-section="together">How It Came Together</a>
+          <a href="#impact"    class="toc-item" data-section="impact">The Impact</a>
+        </nav>
+      </aside>
+
+      <div class="case-content">
+
+        <!-- THE RESULT -->
+        <section class="case-section" id="result">
+          <p class="section-eyebrow">The Result</p>
+          <h2 class="section-heading">Prototyping went from weeks to hours — and stopped being a design-only activity</h2>
+          <div class="section-body">
+            <p>PMs and engineers can now build on-brand, interactive prototypes independently. Design standards are held at the system level, so output stays consistent no matter who builds it.</p>
+          </div>
+
+          <div class="cto-moment">
+            <p class="cto-moment-setup">Our PM spent two hours one evening building a Get Started flow for the AI agent — including Add Data and Explore with Sample Data. She presented it to the CTO the next morning.</p>
+            <div class="chat-bubbles">
+              <div class="chat-row chat-left">
+                <div class="chat-avatar">CTO</div>
+                <div class="chat-bubble chat-bubble-left">"This looks fantastic. Who built it?"</div>
+              </div>
+              <div class="chat-row chat-right">
+                <div class="chat-bubble chat-bubble-right">"Me."</div>
+                <div class="chat-avatar">PM</div>
+              </div>
+            </div>
+          </div>
+          <div class="case-image-block shadow-img">
+            <div class="img-placeholder">Image placeholder — Result overview</div>
+          </div>
+        </section>
+
+        <!-- PASSWORD GATE -->
+        <div class="pw-gate" id="pw-gate">
+          <div class="pw-gate-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="0"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+          </div>
+          <h3>The rest of this case study is password protected</h3>
+          <p>Enter the password to read the full process.</p>
+          <div class="pw-form">
+            <input type="password" class="pw-input" id="pw-input" placeholder="Password" autocomplete="off" />
+            <button class="pw-submit" id="pw-submit">Unlock</button>
+          </div>
+          <p class="pw-error" id="pw-error">Incorrect password. Try again.</p>
+        </div>
+
+        <!-- LOCKED CONTENT -->
+        <div class="locked-content" id="locked-content">
+
+        <!-- THE PROBLEM -->
+        <section class="case-section" id="problem">
+          <p class="section-eyebrow">The Problem</p>
+          <h2 class="section-heading">Demand for prototypes consistently outpaced what design could produce</h2>
+          <div class="section-body">
+            <p>As Dremio's AI agent work accelerated, bringing AI into the workflow seemed like the obvious fix. But early attempts produced output that was visually inconsistent and hard to build on.</p>
+            <p>The AI wasn't the problem. Our design system was. It had been built by a small team who shared an implicit understanding of how everything worked. That knowledge lived in people's heads, not in the system. Component names were inconsistent. Descriptions were almost entirely absent. What worked for humans who already knew the system was unreadable to an AI trying to use it.</p>
+          </div>
+          <div class="case-image-block shadow-img rounded-img">
+            <div class="img-placeholder">Image placeholder — AI output inconsistency examples</div>
+          </div>
+        </section>
+
+        <!-- THE REAL CHALLENGE -->
+        <section class="case-section" id="challenge">
+          <p class="section-eyebrow">The Real Challenge</p>
+          <h2 class="section-heading">Two problems that had to be solved in order</h2>
+          <div class="section-body">
+            <p>The first was making the design system legible to AI. Without this, every prototype AI generated would need heavy correction and the effort would never get easier over time.</p>
+            <p>The second was harder. Dremio's AI agent UI was still actively changing. Any system we built needed to hold design standards firm while leaving teams room to explore. Too rigid and it would block the experimentation the product needed. Too loose and AI output would drift from our visual language.</p>
+          </div>
+          <div class="case-image-block shadow-img rounded-img">
+            <div class="img-placeholder">Image placeholder — The two-problem framing</div>
+          </div>
+        </section>
+
+        <!-- THE STRATEGY -->
+        <section class="case-section" id="strategy">
+          <p class="section-eyebrow">The Strategy</p>
+          <h2 class="section-heading">Sequence first, build second</h2>
+          <div class="section-body">
+            <p>The key decision was sequencing. Building a prototyping system before the underlying library was legible to AI would have meant building on sand. Any output would require constant correction and nothing would get easier over time.</p>
+          </div>
+
+          <div class="result-callouts">
+            <div class="result-callout">
+              <h3>Phase 1 — Make the system readable</h3>
+              <p>Get the design system to a state where AI could interpret it correctly, with consistent naming, clear descriptions, and documented variant usage across all components.</p>
+            </div>
+            <div class="result-callout">
+              <h3>Phase 2 — Build modular structure on top</h3>
+              <p>Layer a modular prototyping system on that foundation, where design standards are enforced by architecture rather than by someone reviewing every output.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- HOW IT CAME TOGETHER -->
+        <section class="case-section" id="together">
+          <p class="section-eyebrow">How It Came Together</p>
+          <h2 class="section-heading">From implicit knowledge to a system anyone can use</h2>
+
+          <div class="case-image-block shadow-img">
+            <div class="img-placeholder">System diagram — Figma Design System → Claude Code + Figma MCP → Standardized Components → Modular Workflows → Git → Team Usage</div>
+          </div>
+
+          <h3 class="sub-heading">Making the system legible</h3>
+          <p class="section-body">I used Claude Code with Figma MCP to read the library the way AI would, then generate naming and description proposals for all 96 components. I reviewed and corrected where the AI had misread intent, then pushed the updated metadata back into Figma. Every component now has a consistent name, a clear description, and documented variant usage.</p>
+          <p class="section-body">I also built an interactive visual reference alongside it, similar to an engineering storybook, so anyone on the team could see what existed and how to use it before building.</p>
+
+          <div class="case-image-block shadow-img rounded-img">
+            <div class="img-placeholder">Image placeholder — Component library before/after naming</div>
+          </div>
+
+          <h3 class="sub-heading">Building the modular system</h3>
+          <p class="section-body">The only starting point for the AI agent UI was a rough Claude Code prototype, functional in structure but far from our visual standards. I brought it into Figma to align it with our design language, then rebuilt it in Figma Make, validating component fidelity and layering in flows that other teams could use as a starting point for their own exploration.</p>
+          <p class="section-body">Once the prototype was solid, I broke it down by UI structure rather than by feature flow. Each panel became its own module, with documented elements, their variants, and their built-in interactions. The Chat panel, for example, contains the input field, user message bubbles, AI response formats, tool call states, and every result type AI can generate: datasets, SQL, charts, lineage, wikis, descriptions, and more.</p>
+          <p class="section-body">This meant each module shipped with enough interactive logic that someone could pick it up and start building immediately without having to wire everything from scratch. It also made future updates much more contained. Changing how a result type looks or behaves only touches one place.</p>
+          <p class="section-body">The decision to build the complete prototype first and modularize after was deliberate. Designing for modularity upfront, before the interactions were validated, would have meant optimizing structure before we knew what the structure should be.</p>
+
+          <div class="case-image-block shadow-img rounded-img">
+            <div class="img-placeholder">Image placeholder — Module breakdown by UI panel</div>
+          </div>
+
+          <div class="case-image-block shadow-img rounded-img">
+            <div class="img-placeholder">Image placeholder — Chat panel component detail</div>
+          </div>
+        </section>
+
+        <!-- THE IMPACT -->
+        <section class="case-section" id="impact">
+          <p class="section-eyebrow">The Impact</p>
+          <h2 class="section-heading">Design is no longer the bottleneck</h2>
+          <div class="section-body">
+            <p>Anyone can now build on-brand prototypes independently, and the output is consistent because the system enforces it, not because a designer reviewed it.</p>
+            <p>The PM's CTO moment was the clearest sign it was working. But the more meaningful shift was structural: we went from design creating screens to design defining the system that creates them.</p>
+          </div>
+
+          <div class="case-image-block shadow-img rounded-img">
+            <div class="img-placeholder">Image placeholder — Team usage examples / output showcase</div>
+          </div>
+
+          <div class="takeaway-box">
+            <h4>What I Took Away</h4>
+            <p>The hardest call was doing the foundation work first when the pressure was to move fast on visible product work. Getting that sequence right was what made everything else possible.</p>
+          </div>
+
+          <h3 class="sub-heading">What's Next</h3>
+          <p class="section-body">Expanding the module library and building a process to keep the system in sync as the product continues to change.</p>
+        </section>
+
+        </div><!-- end locked-content -->
+
+      </div><!-- end case-content -->
+    </div><!-- end case-layout -->
+  </main>
+
+  <!-- NEXT PROJECT -->
+  <div class="next-project-bar">
+    <div class="next-project-inner">
+      <span class="next-project-label">Next Project</span>
+      <a href="autonomous-reflections.html" class="next-project-link">
+        <h3>Autonomous Reflections</h3>
+        <img src="icon-arrow-right.svg" alt="" />
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // Header shadow on scroll
+    const header = document.getElementById('site-header');
+    window.addEventListener('scroll', () => {
+      header.style.boxShadow = window.scrollY > 10 ? '0 2px 20px rgba(0,0,0,0.06)' : '';
+    });
+
+    // TOC IntersectionObserver
+    const sections = document.querySelectorAll('.case-section[id]');
+    const tocItems = document.querySelectorAll('.toc-item');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          tocItems.forEach(item => {
+            item.classList.toggle('active', item.getAttribute('href') === '#' + id);
+          });
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+
+    sections.forEach(s => observer.observe(s));
+
+    // TOC smooth scroll
+    tocItems.forEach(item => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector(item.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    // Hamburger menu
+    const hamburger = document.getElementById('nav-hamburger');
+    const siteNav = document.getElementById('site-nav');
+    hamburger.addEventListener('click', () => {
+      const isOpen = siteNav.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen);
+    });
+    siteNav.querySelectorAll('.nav-item').forEach(item => {
+      item.addEventListener('click', () => {
+        siteNav.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', false);
+      });
+    });
+
+    // Password gate
+    const PW = 'supernova';
+    const gate    = document.getElementById('pw-gate');
+    const locked  = document.getElementById('locked-content');
+    const pwInput = document.getElementById('pw-input');
+    const pwError = document.getElementById('pw-error');
+
+    function unlock() {
+      gate.style.display = 'none';
+      locked.classList.add('unlocked');
+      sessionStorage.setItem('case_unlocked', '1');
+    }
+
+    if (sessionStorage.getItem('case_unlocked') === '1') { unlock(); }
+
+    document.getElementById('pw-submit').addEventListener('click', () => {
+      if (pwInput.value === PW) { unlock(); }
+      else { pwError.classList.add('visible'); pwInput.value = ''; pwInput.focus(); }
+    });
+    pwInput.addEventListener('keydown', e => { if (e.key === 'Enter') document.getElementById('pw-submit').click(); });
+    pwInput.addEventListener('input',   () => pwError.classList.remove('visible'));
+  </script>
+  <script src="animations.js"></script>
+</body>
+</html>

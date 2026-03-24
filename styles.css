@@ -301,7 +301,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .projects-grid {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 24px;
 }
 
@@ -894,6 +895,96 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .blockquote-box { background: rgba(20,20,20,0.02); border-left: 3px solid var(--text); padding: 48px 43px; margin: 28px 0; }
 .blockquote-box p { font-family: var(--font-heading); font-size: 21px; font-weight: 700; line-height: 1.5; color: var(--text); }
 
+/* CTO moment chat bubbles */
+.cto-moment {
+  margin: 32px 0;
+  padding: 24px 28px;
+  background: #f7f7f5;
+  border-radius: 4px;
+}
+.cto-moment-setup {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: rgba(20,20,20,0.45);
+  margin: 0 0 16px;
+  line-height: 1.6;
+}
+.chat-bubbles {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.chat-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+.chat-row.chat-right { justify-content: flex-end; }
+.chat-avatar {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: #141414;
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.chat-bubble {
+  max-width: 72%;
+  padding: 9px 14px;
+  border-radius: 14px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.5;
+  font-style: italic;
+}
+.chat-bubble-left {
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-bottom-left-radius: 3px;
+  color: #141414;
+}
+.chat-bubble-right {
+  background: #141414;
+  border-bottom-right-radius: 3px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  font-style: normal;
+}
+
+/* Image placeholder for case studies */
+.img-placeholder {
+  width: 100%; min-height: 320px;
+  display: flex; align-items: center; justify-content: center;
+  background: #f3f3f3;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: #999;
+  text-align: center;
+  padding: 40px 24px;
+}
+
+/* Card 3 (AI Design System) */
+.card-img-teal {
+  background-color: #3a6b6e;
+  height: 342px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.card-img-teal img {
+  max-width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+}
+
 .takeaway-box { background: rgba(20,20,20,0.02); border-left: 3px solid var(--text); padding: 48px 40px; margin: 72px 0 32px; display: flex; flex-direction: column; gap: 24px; }
 .takeaway-box h4 { font-family: var(--font-heading); font-size: 18px; font-weight: 700; }
 .takeaway-box p { font-family: var(--font-body); font-size: 16px; color: rgba(20,20,20,0.75); line-height: 1.7; }
@@ -1272,7 +1363,8 @@ img.analyst-notebooks {
     border-right: none;
   }
   .work-inner h2 { font-size: 24px; }
-  .projects-grid { flex-direction: column; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .projects-grid .project-card[style] { grid-column: 1 !important; }
   .card-body { padding: 24px 20px; gap: 16px; }
   .card-body h3 { font-size: 20px; }
   .card-body p { font-size: 16px; }
