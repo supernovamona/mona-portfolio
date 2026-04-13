@@ -169,14 +169,16 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   background-color: var(--bg);
   z-index: -1;
 }
-.hero-bg::after {
-  content: '';
+
+/* Interactive canvas dot grid */
+.hero-canvas {
   position: absolute;
   inset: 0;
-  background-image: url('dot-grid.svg');
-  background-repeat: repeat;
-  background-size: 1200px 600px;
-  opacity: 0.8;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  display: block;
 }
 
 .hero h1 {
@@ -332,24 +334,34 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: block;
 }
 
-/* Card 1 (Autonomous Reflections) — green bg */
+/* Card 1 (Autonomous Reflections) — grainy green gradient */
 .card-img-green {
-  background-color: #42653c;
+  background:
+    url('noise.svg'),
+    radial-gradient(ellipse 90% 90% at 30% 30%, #3a7040 0%, #1d3f22 40%, #0d1f10 100%);
+  background-blend-mode: soft-light, normal;
+  background-size: 300px 300px, 100% 100%;
   height: 342px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .card-img-green img {
-  width: 448px;
-  height: 323px;
+  width: 422px;
+  height: auto;
   max-width: 100%;
   object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.35));
 }
 
-/* Card 2 (Cloud Onboarding) — blue/purple bg */
+/* Card 2 (Cloud Onboarding) — grainy indigo gradient */
 .card-img-purple {
-  background-color: #757db8;
+  background:
+    url('noise.svg'),
+    radial-gradient(ellipse 85% 85% at 65% 25%, #5040a0 0%, #1e1648 40%, #0d0920 100%);
+  background-blend-mode: soft-light, normal;
+  background-size: 300px 300px, 100% 100%;
   height: 342px;
   display: flex;
   align-items: center;
@@ -362,7 +374,26 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   max-width: 100%;
   object-fit: contain;
   border-radius: 8px;
-  box-shadow: 0 30px 67px rgba(150,150,150,0.1);
+  box-shadow: 0 30px 67px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+/* Card 3 (AI Design System) — grainy navy gradient */
+.card-img-ai {
+  background:
+    url('noise.svg'),
+    linear-gradient(140deg, #0e1f3d 0%, #1a3f6f 50%, #0a1628 100%);
+  background-blend-mode: soft-light, normal;
+  background-size: 300px 300px, 100% 100%;
+  height: 342px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-img-ai img {
+  max-width: 100%;
+  object-fit: contain;
+  position: relative;
 }
 
 .card-body {
@@ -878,6 +909,47 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-weight: 700;
   margin-bottom: 16px;
   margin-top: 80px;
+}
+
+/* Image placeholder for unpublished case studies */
+.img-placeholder {
+  width: 100%; padding: 48px 24px;
+  border: 2px dashed var(--border);
+  color: rgba(20,20,20,0.3);
+  font-family: var(--font-body); font-size: 14px;
+  text-align: center; border-radius: 4px;
+  background: rgba(20,20,20,0.02);
+}
+
+/* CTO moment conversation */
+.cto-moment {
+  margin: 32px 0 40px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.cto-message { display: flex; align-items: flex-end; gap: 10px; }
+.cto-message--right { flex-direction: row-reverse; }
+.cto-label {
+  font-family: var(--font-body); font-size: 11px;
+  letter-spacing: 1.2px; text-transform: uppercase;
+  color: rgba(20,20,20,0.4); white-space: nowrap; padding-bottom: 4px;
+}
+.cto-bubble {
+  font-family: var(--font-body); font-size: 15px; line-height: 1.5;
+  padding: 12px 16px; max-width: 380px;
+}
+.cto-bubble--left {
+  background: rgba(20,20,20,0.05);
+  border-radius: 0 12px 12px 12px;
+  color: var(--text);
+}
+.cto-bubble--right {
+  background: var(--text); color: var(--white);
+  border-radius: 12px 0 12px 12px;
+}
+.cto-context {
+  font-family: var(--font-body); font-size: 14px;
+  color: rgba(20,20,20,0.5); line-height: 1.6;
+  margin-top: 8px; padding-left: 4px;
 }
 
 .case-image-block { margin: 32px 0; }

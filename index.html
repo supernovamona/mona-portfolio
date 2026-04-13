@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mona Li — UX Designer</title>
+  <link rel="icon" href="logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -29,7 +30,7 @@
   <!-- HERO -->
   <section class="hero" id="hero">
     <div class="hero-inner">
-      <div class="hero-bg"></div>
+      <canvas class="hero-canvas" id="hero-canvas"></canvas>
       <h1>Hi, I'm Mona.</h1>
       <div class="hero-text">
         <p class="hero-subtitle">Designing data platforms and AI workflows that turn complexity into clarity.</p>
@@ -101,6 +102,8 @@
             </span>
           </div>
         </a>
+
+
       </div>
     </div>
   </section>
@@ -218,6 +221,75 @@ before moving into design.</h3>
         hamburger.setAttribute('aria-expanded', false);
       });
     });
+
+    // --- Interactive hero dot grid with ripple ---
+    (function() {
+      const canvas = document.getElementById('hero-canvas');
+      const ctx = canvas.getContext('2d');
+      const SPACING = 18;
+      const R_BASE = 1;
+      const R_MAX = 2.2;
+      const ripples = [];
+      let lastRipple = 0;
+
+      function resize() {
+        canvas.width  = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      const hero = canvas.parentElement;
+      hero.addEventListener('mousemove', (e) => {
+        const now = performance.now();
+        if (now - lastRipple < 60) return; // throttle
+        lastRipple = now;
+        const rect = canvas.getBoundingClientRect();
+        ripples.push({ x: e.clientX - rect.left, y: e.clientY - rect.top, t: now });
+        if (ripples.length > 10) ripples.shift();
+      });
+
+      function draw(now) {
+        requestAnimationFrame(draw);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Prune old ripples
+        for (let i = ripples.length - 1; i >= 0; i--) {
+          if (now - ripples[i].t > 2200) ripples.splice(i, 1);
+        }
+
+        const cols = Math.ceil(canvas.width  / SPACING) + 1;
+        const rows = Math.ceil(canvas.height / SPACING) + 1;
+
+        for (let r = 0; r < rows; r++) {
+          for (let c = 0; c < cols; c++) {
+            const x = c * SPACING;
+            const y = r * SPACING;
+
+            let influence = 0;
+            for (const rpl of ripples) {
+              const age  = (now - rpl.t) / 1000;          // seconds
+              const front = age * 200;                      // wave speed 200 px/s
+              const dist  = Math.hypot(x - rpl.x, y - rpl.y);
+              const delta = dist - front;
+              const decay = Math.exp(-age * 1.0);
+              // Gaussian bell centered on wavefront
+              const w = Math.exp(-(delta * delta) / 350) * decay;
+              if (w > influence) influence = w;
+            }
+
+            const radius  = R_BASE + influence * (R_MAX - R_BASE);
+            const opacity = 0.1  + influence * 0.4;
+
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(20,20,20,${opacity.toFixed(3)})`;
+            ctx.fill();
+          }
+        }
+      }
+      requestAnimationFrame(draw);
+    })();
   </script>
   <script src="animations.js"></script>
 </body>
