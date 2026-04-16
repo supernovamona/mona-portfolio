@@ -315,11 +315,24 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   border: 1px solid var(--border);
   display: flex;
   flex-direction: column;
-  overflow: hidden;
   text-decoration: none;
-  transition: transform var(--transition), box-shadow var(--transition);
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              border-color 0.4s ease;
 }
-.project-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+/* Shadow lives on ::after so opacity can animate smoothly */
+.project-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  box-shadow: 0 20px 56px rgba(0,0,0,0.12);
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  pointer-events: none;
+  z-index: 0;
+}
+.project-card:hover { transform: translateY(-4px); border-color: transparent; }
+.project-card:hover::after { opacity: 1; }
 
 /* Card image area */
 .card-img-wrap {
@@ -347,11 +360,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   justify-content: center;
 }
 .card-img-green img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 422px;
+  max-width: 88%;
   height: auto;
-  max-width: 100%;
-  object-fit: contain;
-  display: block;
   filter: drop-shadow(0 20px 40px rgba(0,0,0,0.35));
 }
 
@@ -370,12 +385,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .card-img-purple img {
   width: 422px;
-  height: 264px;
+  height: auto;
   max-width: 100%;
-  object-fit: contain;
-  border-radius: 8px;
+  border-radius: 4px;
   box-shadow: 0 30px 67px rgba(0,0,0,0.2);
-  position: relative;
+  display: block;
 }
 
 /* Card 3 (AI Design System) — grainy navy gradient */
@@ -1442,8 +1456,8 @@ img.analyst-notebooks {
   .card-body p { font-size: 16px; }
   .card-img-green,
   .card-img-purple { height: 220px; }
-  .card-img-green img  { width: auto; max-width: 100%; height: 180px; }
-  .card-img-purple img { width: auto; max-width: 100%; height: 160px; }
+  .card-img-green img  { width: 88%; max-width: 88%; height: auto; }
+  .card-img-purple img { width: 100%; height: auto; border-radius: 4px; }
 
   /* --- Experience --- */
   .exp-inner {
@@ -1685,6 +1699,33 @@ img.analyst-notebooks {
   transform: translateY(0);
 }
 
+/* Blur-up: title entrance — translateY + opacity + blur */
+.blur-up {
+  opacity: 0;
+  transform: translateY(20px);
+  filter: blur(10px);
+  transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+              filter 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.blur-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0px);
+}
+
+/* Blur-fade: opacity + blur only, for elements with their own transform (e.g. rotated social cards) */
+.blur-fade {
+  opacity: 0;
+  filter: blur(8px);
+  transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+              filter 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.blur-fade.visible {
+  opacity: 1;
+  filter: blur(0px);
+}
+
 /* Hero entrance — CSS keyframe, no JS needed */
 @keyframes heroFadeUp {
   from { opacity: 0; transform: translateY(22px); }
@@ -1718,6 +1759,10 @@ img.analyst-notebooks {
 .project-card:hover .card-img-wrap img {
   transform: scale(1.04);
 }
+/* Green card uses absolute centering — must combine transforms on hover */
+.project-card:hover .card-img-green img {
+  transform: translate(-50%, -50%) scale(1.04);
+}
 
 /* Bento item image zoom on hover */
 .bento-item {
@@ -1731,7 +1776,9 @@ img.analyst-notebooks {
 
 /* Reduce motion for accessibility */
 @media (prefers-reduced-motion: reduce) {
-  .fade-up { opacity: 1; transform: none; transition: none; }
+  .fade-up   { opacity: 1; transform: none; filter: none; transition: none; }
+  .blur-up   { opacity: 1; transform: none; filter: none; transition: none; }
+  .blur-fade { opacity: 1; filter: none; transition: none; }
   .hero h1, .hero .hero-text, .hero .hero-buttons, .hero .scroll-btn,
   .about-hero-photo, .about-hero-text { animation: none; }
 }

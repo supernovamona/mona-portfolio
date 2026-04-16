@@ -2,45 +2,64 @@
 (function () {
   'use strict';
 
-  // ── Selectors to animate on scroll ─────────────────────────────
-  const SINGLES = [
+  // ── Selectors: blur-up for titles, fade-up for everything else ──
+  const BLUR_TITLES = [
     '.section-label',
     '.work-section h2',
     '.exp-section h2',
+    // Footer
+    '.footer-heading',
+    // About page headings
+    '.about-hero-text h1',
+    '.about-row-text h2',
+    // Case study hero
+    '.case-hero-title',
+    '.case-hero-subtitle',
+    // Case study sections
+    '.section-eyebrow',
+    '.section-heading',
+    '.sub-heading',
+  ];
+
+  const SINGLES = [
     '.analyst-box',
-    '.footer-heading-row',
     '.footer-cta-row',
     '.about-hero-photo',
-    '.about-hero-text',
-    '.about-row-text',
+    '.about-hero-text p',
+    '.about-row-text p',
     '.about-row-image',
     '.bento-intro',
     '.bento-grid',
     // Case study hero
     '.case-meta-label',
-    '.case-hero-title',
-    '.case-hero-subtitle',
     '.case-hero-body',
     '.case-meta-row',
     // Case study sections
-    '.section-eyebrow',
-    '.section-heading',
     '.section-body',
     '.case-image-block',
-    '.sub-heading',
     '.takeaway-box',
     '.next-project-link',
   ];
 
-  // ── Stagger groups: [parent, child] ────────────────────────────
+  // ── Stagger groups: [parent, child, animClass, startDelay] ─────
   const STAGGER = [
-    ['.projects-grid',    '.project-card'],
-    ['.exp-list',         '.exp-row'],
-    ['.about-content',    '.about-row'],
-    ['.result-callouts',  '.result-callout'],
+    ['.projects-grid',   '.project-card', 'fade-up', 0],
+    ['.exp-list',        '.exp-row',      'fade-up', 0],
+    ['.about-content',   '.about-row',    'fade-up', 0],
+    ['.result-callouts', '.result-callout','fade-up', 0],
+    ['.footer-socials',  '.social-btn',   'blur-fade', 0.28], // blur-fade preserves rotation
   ];
 
   function init() {
+    // Apply .blur-up to title elements
+    BLUR_TITLES.forEach(sel => {
+      document.querySelectorAll(sel).forEach(el => {
+        if (!el.closest('.hero') && !el.closest('.about-hero')) {
+          el.classList.add('blur-up');
+        }
+      });
+    });
+
     // Apply .fade-up to single elements (skip anything inside .hero)
     SINGLES.forEach(sel => {
       document.querySelectorAll(sel).forEach(el => {
@@ -50,13 +69,12 @@
       });
     });
 
-    // Apply .fade-up with stagger delays to group children
-    STAGGER.forEach(([parentSel, childSel]) => {
+    // Apply stagger delays to group children
+    STAGGER.forEach(([parentSel, childSel, cls, startDelay]) => {
       document.querySelectorAll(parentSel).forEach(parent => {
         parent.querySelectorAll(childSel).forEach((child, i) => {
-          child.classList.add('fade-up');
-          if (i > 0) child.dataset.delay = Math.min(i, 4);
-          child.style.transitionDelay = i * 0.12 + 's';
+          child.classList.add(cls);
+          child.style.transitionDelay = (startDelay + i * 0.13) + 's';
         });
       });
     });
@@ -71,7 +89,7 @@
       });
     }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
 
-    document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+    document.querySelectorAll('.fade-up, .blur-up, .blur-fade').forEach(el => io.observe(el));
   }
 
   // ── Header shadow on scroll (applied to all pages) ─────────────
