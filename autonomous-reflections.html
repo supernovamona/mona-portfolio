@@ -216,23 +216,85 @@
             <img src="ar-behavior-diagram.png" alt="Behavior-driven optimization diagram" />
           </div>
 
-          <h3 class="sub-heading">A Path to Automation</h3>
-          <p class="section-body">To make automation easier to adopt, I designed two modes.</p>
+          <h3 class="sub-heading">Balancing Automation with Control</h3>
+          <p class="section-body">To design the right solution, I mapped out three states: the painful status quo, a semi-automatic mode where users stay in control, and a fully autonomous mode for teams ready to hand off optimization entirely. The contrast made it clear why a single mode wouldn't work.</p>
 
-          <div class="two-modes">
-            <div class="mode-card">
-              <h4>Recommendation Mode</h4>
-              <p>The system suggests reflections based on query history. Users can review and apply them with one click.</p>
+          <div class="flow-diagram">
+
+            <!-- Legend -->
+            <p class="flow-title">User Journey Comparison</p>
+            <div class="flow-legend">
+              <div class="flow-legend-item">
+                <span class="flow-chip flow-chip--user"></span>
+                <span class="flow-legend-label">User</span>
+              </div>
+              <div class="flow-legend-item">
+                <span class="flow-chip flow-chip--system"></span>
+                <span class="flow-legend-label">System</span>
+              </div>
+              <div class="flow-legend-item">
+                <span class="flow-chip flow-chip--both"></span>
+                <span class="flow-legend-label">Both</span>
+              </div>
+              <div class="flow-legend-item">
+                <span class="flow-chip flow-chip--friction"></span>
+                <span class="flow-legend-label">Friction</span>
+              </div>
             </div>
-            <div class="mode-card">
-              <h4>Autonomous Mode</h4>
-              <p>Once users trust the system, they can enable full automation. Reflections are then created and maintained automatically.</p>
+
+            <!-- Current State -->
+            <div class="flow-row">
+              <div class="flow-row-header">
+                <span class="flow-row-bar flow-bar--friction"></span>
+                <div>
+                  <div class="flow-row-title">Current State</div>
+                  <div class="flow-row-subtitle">Expert-only, manual, repeat forever</div>
+                </div>
+              </div>
+              <div class="flow-steps-scroll">
+                <img src="ar-flow-current.png" alt="Current state user journey" class="flow-img" />
+              </div>
             </div>
+
+            <div class="flow-divider"></div>
+
+            <!-- Semi-Auto -->
+            <div class="flow-row">
+              <div class="flow-row-header">
+                <span class="flow-row-bar flow-bar--system"></span>
+                <div>
+                  <div class="flow-row-title">Semi-Auto Mode</div>
+                  <div class="flow-row-subtitle">System recommends, user decides</div>
+                </div>
+              </div>
+              <div class="flow-steps-scroll">
+                <img src="ar-flow-semi.png" alt="Semi-auto mode user journey" class="flow-img" />
+              </div>
+            </div>
+
+            <div class="flow-divider"></div>
+
+            <!-- Full-Auto -->
+            <div class="flow-row">
+              <div class="flow-row-header">
+                <span class="flow-row-bar flow-bar--both"></span>
+                <div>
+                  <div class="flow-row-title">Full-Auto Mode</div>
+                  <div class="flow-row-subtitle">System handles everything</div>
+                </div>
+              </div>
+              <div class="flow-steps-scroll">
+                <img src="ar-flow-full.png" alt="Full-auto mode user journey" class="flow-img" />
+              </div>
+            </div>
+
+            <div class="flow-divider"></div>
+            <p class="flow-footnote">The current journey has 11+ steps and requires deep technical knowledge. Semi-Auto reduces it to 7 steps with system guidance. Full-Auto brings it down to 5, where the user's only job is turning it on.</p>
+
           </div>
 
           <div class="case-image-block shadow-img">
             <img src="ar-recommendation-mode.png" alt="Recommendation mode showing expected impact" />
-            <p class="img-caption">Show recommendations with the expected impact of each reflection to encourage users to enable them.</p>
           </div>
 
           <h3 class="sub-heading">Showing the Impact</h3>

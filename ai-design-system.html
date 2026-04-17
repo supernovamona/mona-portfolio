@@ -95,8 +95,15 @@
             <p class="cto-context">Our PM spent two hours one evening building a Get Started flow for the AI agent — including Add Data and Explore with Sample Data. She presented it to the CTO the next morning.</p>
           </div>
 
-          <div class="case-image-block shadow-img">
-            <div class="img-placeholder">Image placeholder — Result overview</div>
+          <div class="case-image-block">
+            <video
+              src="ai-result-demo.mp4?v=5"
+              autoplay
+              muted
+              loop
+              playsinline
+              style="width:100%;display:block;border-radius:6px;box-shadow:0 24px 64px rgba(0,0,0,0.12);"
+            ></video>
           </div>
         </section>
 
@@ -128,8 +135,120 @@
             <p>As Dremio's AI agent work accelerated, bringing AI into the workflow seemed like the obvious fix. But early attempts produced output that was visually inconsistent and hard to build on.</p>
             <p>The AI wasn't the problem. Our design system was. It had been built by a small team who shared an implicit understanding of how everything worked. That knowledge lived in people's heads, not in the system. Component names were inconsistent. Descriptions were almost entirely absent. What worked for humans who already knew the system was unreadable to an AI trying to use it.</p>
           </div>
-          <div class="case-image-block shadow-img rounded-img">
-            <div class="img-placeholder">Image placeholder — AI output inconsistency examples</div>
+          <div class="ds-audit">
+            <div class="ds-audit-header">
+              <div>
+                <span class="ds-audit-col-label">Component name in Figma</span>
+                <span class="ds-audit-note">From 80+ components — all had similar issues</span>
+              </div>
+              <span class="ds-audit-col-label">What was missing</span>
+            </div>
+            <div class="ds-audit-row">
+              <div class="ds-audit-name">
+                <span class="ds-audit-bullet">●</span>
+                <code>left nav</code>
+              </div>
+              <span class="ds-audit-arrow">→</span>
+              <div class="ds-audit-issues">
+                <div class="ds-audit-issue">
+                  <strong>No description</strong>
+                  <span>What does it contain? When should it be used?</span>
+                </div>
+                <div class="ds-audit-issue">
+                  <strong>No variant guide</strong>
+                  <span>Expanded vs Collapsed states never documented</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="ds-audit-row">
+              <div class="ds-audit-name">
+                <span class="ds-audit-bullet">●</span>
+                <code>Status pills</code>
+              </div>
+              <span class="ds-audit-arrow">→</span>
+              <div class="ds-audit-issues">
+                <div class="ds-audit-issue">
+                  <strong>Ambiguous name</strong>
+                  <span>"Pills" isn't a Figma convention — hard to search</span>
+                </div>
+                <div class="ds-audit-issue">
+                  <strong>No variant mapping</strong>
+                  <span>Which variant maps to which product state?</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="ds-audit-row">
+              <div class="ds-audit-name">
+                <span class="ds-audit-bullet">●</span>
+                <code>radio&amp;checkbox with text</code>
+              </div>
+              <span class="ds-audit-arrow">→</span>
+              <div class="ds-audit-issues">
+                <div class="ds-audit-issue">
+                  <strong>Inconsistent naming</strong>
+                  <span>Doesn't follow Input/ namespace used everywhere else</span>
+                </div>
+                <div class="ds-audit-issue">
+                  <strong>No usage guidance</strong>
+                  <span>When to use this vs Input/Radio Button directly?</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="ds-audit-row">
+              <div class="ds-audit-name">
+                <span class="ds-audit-bullet">●</span>
+                <code>Form/ Field</code>
+              </div>
+              <span class="ds-audit-arrow">→</span>
+              <div class="ds-audit-issues">
+                <div class="ds-audit-issue">
+                  <strong>Incomplete name</strong>
+                  <span>"Field" is too generic — the type isn't clear</span>
+                </div>
+                <div class="ds-audit-issue">
+                  <strong>No state documentation</strong>
+                  <span>Error, Disabled, Filled states never described</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="ds-audit-row">
+              <div class="ds-audit-name">
+                <span class="ds-audit-bullet">●</span>
+                <code>Scroll Bar</code>
+              </div>
+              <span class="ds-audit-arrow">→</span>
+              <div class="ds-audit-issues">
+                <div class="ds-audit-issue">
+                  <strong>Inconsistent casing</strong>
+                  <span>Title case; every other component uses slash notation</span>
+                </div>
+                <div class="ds-audit-issue">
+                  <strong>No description</strong>
+                  <span>Custom or native? No guidance on when to apply it</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="ds-audit-footer">
+              <div class="ds-audit-summary">
+                <p class="ds-audit-summary-title">Names that only made sense to the people who built the system.</p>
+                <p class="ds-audit-summary-sub">No descriptions. No usage context. No variant documentation.</p>
+              </div>
+              <div class="ds-audit-stats">
+                <div class="ds-audit-stat">
+                  <span class="ds-audit-stat-num">~80</span>
+                  <span class="ds-audit-stat-label">components audited</span>
+                </div>
+                <div class="ds-audit-stat">
+                  <span class="ds-audit-stat-num">0</span>
+                  <span class="ds-audit-stat-label">had a written description</span>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -141,8 +260,26 @@
             <p>The first was making the design system legible to AI. Without this, every prototype AI generated would need heavy correction and the effort would never get easier over time.</p>
             <p>The second was harder. Dremio's AI agent UI was still actively changing. Any system we built needed to hold design standards firm while leaving teams room to explore. Too rigid and it would block the experimentation the product needed. Too loose and AI output would drift from our visual language.</p>
           </div>
-          <div class="case-image-block shadow-img rounded-img">
-            <div class="img-placeholder">Image placeholder — The two-problem framing</div>
+          <div class="before-after-wrap">
+            <div class="before-after" id="beforeAfter">
+              <div class="before-after-before">
+                <img src="ai-agent-after.png" alt="AI Agent — current version" draggable="false" />
+              </div>
+              <div class="before-after-after">
+                <img src="ai-agent-before.png" alt="AI Agent — earlier version" draggable="false" />
+              </div>
+              <div class="before-after-divider" id="beforeAfterDivider">
+                <div class="before-after-handle">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <path d="M6 4L2 9L6 14" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 4L16 9L12 14" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+              <span class="before-after-label before-after-label--left">Earlier</span>
+              <span class="before-after-label before-after-label--right">Current</span>
+            </div>
+            <p class="before-after-footnote">The AI Agent UI went through significant structural changes between these two versions. The layout, navigation, and interaction patterns all shifted — which meant any component system built too early would need to be rebuilt from scratch. This is why making the design system legible first, before building on top of it, was the only sequencing that made sense.</p>
           </div>
         </section>
 
@@ -171,16 +308,160 @@
           <p class="section-eyebrow">How It Came Together</p>
           <h2 class="section-heading">From implicit knowledge to a system anyone can use</h2>
 
-          <div class="case-image-block shadow-img">
-            <div class="img-placeholder">System diagram — Figma Design System → Claude Code + Figma MCP → Standardized Components → Modular Workflows → Git → Team Usage</div>
+          <div class="sys-flow">
+
+            <div class="sys-flow-row">
+              <div class="sys-flow-row-header">
+                <span class="sys-flow-bar sys-bar--phase1"></span>
+                <div>
+                  <div class="sys-flow-row-title">Phase 1 — Make the system legible</div>
+                  <div class="sys-flow-row-subtitle">Before building anything, make the foundation AI-readable</div>
+                </div>
+              </div>
+              <div class="sys-flow-steps-scroll">
+                <div class="sys-flow-steps">
+                  <div class="sys-flow-step sys-step--phase1">
+                    <span class="sys-step-icon">◈</span>
+                    <strong>Figma Design System</strong>
+                    <span>96 components, inconsistent names, zero descriptions</span>
+                  </div>
+                  <span class="sys-flow-arrow">→</span>
+                  <div class="sys-flow-step sys-step--phase1">
+                    <span class="sys-step-icon">⌘</span>
+                    <strong>Claude Code + Figma MCP</strong>
+                    <span>Read the library the way AI would, propose names and descriptions</span>
+                  </div>
+                  <span class="sys-flow-arrow">→</span>
+                  <div class="sys-flow-step sys-step--phase1">
+                    <span class="sys-step-icon">✓</span>
+                    <strong>Human review</strong>
+                    <span>Correct where AI misread intent, validate variant usage</span>
+                  </div>
+                  <span class="sys-flow-arrow">→</span>
+                  <div class="sys-flow-step sys-step--phase1">
+                    <span class="sys-step-icon">◈</span>
+                    <strong>Standardised library</strong>
+                    <span>Every component named, described, and variant-documented</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="sys-flow-divider"></div>
+
+            <div class="sys-flow-row">
+              <div class="sys-flow-row-header">
+                <span class="sys-flow-bar sys-bar--phase2"></span>
+                <div>
+                  <div class="sys-flow-row-title">Phase 2 — Build modular structure on top</div>
+                  <div class="sys-flow-row-subtitle">Standards enforced by architecture, not by review</div>
+                </div>
+              </div>
+              <div class="sys-flow-steps-scroll">
+                <div class="sys-flow-steps">
+                  <div class="sys-flow-step sys-step--phase2">
+                    <span class="sys-step-icon">◱</span>
+                    <strong>Claude Code prototype</strong>
+                    <span>Functional structure, off-brand visuals — the only starting point</span>
+                  </div>
+                  <span class="sys-flow-arrow">→</span>
+                  <div class="sys-flow-step sys-step--phase2">
+                    <span class="sys-step-icon">◈</span>
+                    <strong>Figma Make</strong>
+                    <span>Rebuilt to design language, interactions validated end-to-end</span>
+                  </div>
+                  <span class="sys-flow-arrow">→</span>
+                  <div class="sys-flow-step sys-step--phase2">
+                    <span class="sys-step-icon">▤</span>
+                    <strong>Modular breakdown</strong>
+                    <span>Split by UI panel — Chat, Workspace, Catalog — each self-contained</span>
+                  </div>
+                  <span class="sys-flow-arrow">→</span>
+                  <div class="sys-flow-step sys-step--phase2">
+                    <span class="sys-step-icon"></span>
+                    <strong>claude.md + Skills</strong>
+                    <span>Rules and guardrails for AI-generated UI; step-by-step guides for non-designers</span>
+                  </div>
+                  <span class="sys-flow-arrow">→</span>
+                  <div class="sys-flow-step sys-step--phase2">
+                    <span class="sys-step-icon">↗</span>
+                    <strong>Team usage</strong>
+                    <span>Anyone picks up a module and starts building — no wiring from scratch</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
 
           <h3 class="sub-heading">Making the system legible</h3>
           <p class="section-body">I used Claude Code with Figma MCP to read the library the way AI would, then generate naming and description proposals for all 96 components. I reviewed and corrected where the AI had misread intent, then pushed the updated metadata back into Figma. Every component now has a consistent name, a clear description, and documented variant usage.</p>
           <p class="section-body">I also built an interactive visual reference alongside it, similar to an engineering storybook, so anyone on the team could see what existed and how to use it before building.</p>
 
-          <div class="case-image-block shadow-img rounded-img">
-            <div class="img-placeholder">Image placeholder — Component library before/after naming</div>
+          <div class="ds-reference">
+
+            <div class="ds-ref-component">
+              <div class="ds-ref-meta">
+                <div class="ds-ref-name">Button</div>
+                <div class="ds-ref-path">Button / State / Type / Left Icon / With Option</div>
+                <div class="ds-ref-desc">Primary interactive button for all clickable actions. State: Default, Hover, Pressed, Disabled. Type: Primary, Secondary, Ghost, Danger.</div>
+              </div>
+              <div class="ds-ref-preview">
+                <button class="ds-btn ds-btn--primary">Primary</button>
+                <button class="ds-btn ds-btn--secondary">Secondary</button>
+                <button class="ds-btn ds-btn--ghost">Ghost</button>
+                <button class="ds-btn ds-btn--danger">Delete</button>
+                <button class="ds-btn ds-btn--primary" disabled>Disabled</button>
+              </div>
+            </div>
+
+            <div class="ds-ref-divider"></div>
+
+            <div class="ds-ref-component">
+              <div class="ds-ref-meta">
+                <div class="ds-ref-name">Badge/Status</div>
+                <div class="ds-ref-path">Badge / Variant / Size</div>
+                <div class="ds-ref-desc">Communicates the status of a dataset, job, or process in context. Variants: Default, Secondary, Destructive, Outline, Status.</div>
+              </div>
+              <div class="ds-ref-preview">
+                <span class="ds-badge ds-badge--success">Success</span>
+                <span class="ds-badge ds-badge--warning">Warning</span>
+                <span class="ds-badge ds-badge--error">Error</span>
+                <span class="ds-badge ds-badge--info">Info</span>
+                <span class="ds-badge ds-badge--default">Default</span>
+                <span class="ds-badge ds-badge--outline">Outline</span>
+              </div>
+            </div>
+
+            <div class="ds-ref-divider"></div>
+
+            <div class="ds-ref-component">
+              <div class="ds-ref-meta">
+                <div class="ds-ref-name">Input/Checkbox</div>
+                <div class="ds-ref-path">Input / Checked State / Mode</div>
+                <div class="ds-ref-desc">Checkbox for multi-selection. States: Unchecked, Checked, Indeterminate. Mode: Default, Hover, Focus, Disabled.</div>
+              </div>
+              <div class="ds-ref-preview ds-ref-preview--inputs">
+                <label class="ds-checkbox-label">
+                  <input type="checkbox" class="ds-checkbox" />
+                  <span>Unchecked</span>
+                </label>
+                <label class="ds-checkbox-label">
+                  <input type="checkbox" class="ds-checkbox" checked />
+                  <span>Checked</span>
+                </label>
+                <label class="ds-checkbox-label">
+                  <input type="checkbox" class="ds-checkbox ds-checkbox--indeterminate" />
+                  <span>Indeterminate</span>
+                </label>
+                <label class="ds-checkbox-label ds-checkbox-label--disabled">
+                  <input type="checkbox" class="ds-checkbox" disabled />
+                  <span>Disabled</span>
+                </label>
+              </div>
+            </div>
+
+
           </div>
 
           <h3 class="sub-heading">Building the modular system</h3>
@@ -190,11 +471,11 @@
           <p class="section-body">The decision to build the complete prototype first and modularize after was deliberate. Designing for modularity upfront, before the interactions were validated, would have meant optimizing structure before we knew what the structure should be.</p>
 
           <div class="case-image-block shadow-img rounded-img">
-            <div class="img-placeholder">Image placeholder — Module breakdown by UI panel</div>
+            <img src="ai-modular-doc.png" alt="AI Agent Design System documentation — module breakdown by panel" />
           </div>
 
           <div class="case-image-block shadow-img rounded-img">
-            <div class="img-placeholder">Image placeholder — Chat panel component detail</div>
+            <img src="ai-chat-panel-detail.png" alt="Chat panel component documentation detail" />
           </div>
         </section>
 
@@ -207,8 +488,15 @@
             <p>The PM's CTO moment was the clearest sign it was working. But the more meaningful shift was structural: we went from design creating screens to design defining the system that creates them.</p>
           </div>
 
-          <div class="case-image-block shadow-img rounded-img">
-            <div class="img-placeholder">Image placeholder — Team usage examples / output showcase</div>
+          <div class="case-image-two-col">
+            <div class="case-image-two-col-item">
+              <img src="ai-team-auth.png" alt="Authentication page — built by an engineer using the system" />
+              <p class="img-caption">Engineer-built · Authentication settings · Reviewed by design</p>
+            </div>
+            <div class="case-image-two-col-item">
+              <img src="ai-team-semantic.png" alt="Semantic Layer flow — built by a PM using the system" />
+              <p class="img-caption">PM-built · Semantic Layer setup flow · Reviewed by design</p>
+            </div>
           </div>
 
           <div class="takeaway-box">
@@ -302,6 +590,37 @@
     });
     pwInput.addEventListener('keydown', e => { if (e.key === 'Enter') document.getElementById('pw-submit').click(); });
     pwInput.addEventListener('input',   () => pwError.classList.remove('visible'));
+
+    // Before/After slider
+    (function() {
+      const slider = document.getElementById('beforeAfter');
+      const divider = document.getElementById('beforeAfterDivider');
+      if (!slider || !divider) return;
+      const after = slider.querySelector('.before-after-after');
+
+      function setPos(pct) {
+        pct = Math.max(5, Math.min(95, pct));
+        after.style.width = pct + '%';
+        divider.style.left = pct + '%';
+      }
+
+      function getPos(e) {
+        const rect = slider.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        return ((clientX - rect.left) / rect.width) * 100;
+      }
+
+      let dragging = false;
+      divider.addEventListener('mousedown',  e => { dragging = true; e.preventDefault(); });
+      slider.addEventListener('mousedown',   e => { dragging = true; setPos(getPos(e)); });
+      window.addEventListener('mousemove',   e => { if (dragging) setPos(getPos(e)); });
+      window.addEventListener('mouseup',     () => { dragging = false; });
+      divider.addEventListener('touchstart', e => { dragging = true; e.preventDefault(); }, { passive: false });
+      window.addEventListener('touchmove',   e => { if (dragging) setPos(getPos(e)); }, { passive: true });
+      window.addEventListener('touchend',    () => { dragging = false; });
+
+      setPos(50);
+    })();
   </script>
   <script src="animations.js"></script>
 </body>

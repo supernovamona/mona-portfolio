@@ -39,6 +39,14 @@
     '.case-image-block',
     '.takeaway-box',
     '.next-project-link',
+    // AI Design System custom blocks
+    '.ds-audit',
+    '.before-after-wrap',
+    '.sys-flow',
+    '.ds-reference',
+    '.case-image-two-col',
+    '.flow-diagram',
+    '.cto-moment',
   ];
 
   // ── Stagger groups: [parent, child, animClass, startDelay] ─────
