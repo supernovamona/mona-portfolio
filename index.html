@@ -242,73 +242,115 @@ before moving into design.</h3>
       });
     });
 
-    // --- Interactive hero dot grid with ripple ---
+    // --- Interactive hero dot grid with ripple (batched + offscreen) ---
     (function() {
       const canvas = document.getElementById('hero-canvas');
-      const ctx = canvas.getContext('2d');
-      const SPACING = 18;
-      const R_BASE = 1;
-      const R_MAX = 2.2;
+      const ctx    = canvas.getContext('2d');
+      const SPACING    = 12;      // denser grid
+      const R_BASE     = 1;
+      const R_MAX      = 1.7;
+      const WAVE_SPEED = 220;     // px/s
+      const WAVE_LIFE  = 2000;    // ms
+      const BUCKETS    = 8;       // opacity batching levels
       const ripples = [];
       let lastRipple = 0;
+      let animating  = false;
+
+      // Offscreen canvas — static dots drawn once per resize
+      const off    = document.createElement('canvas');
+      const offCtx = off.getContext('2d');
+
+      function buildStatic() {
+        off.width  = canvas.width;
+        off.height = canvas.height;
+        offCtx.clearRect(0, 0, off.width, off.height);
+        const cols = Math.ceil(off.width  / SPACING) + 1;
+        const rows = Math.ceil(off.height / SPACING) + 1;
+        offCtx.beginPath();
+        for (let r = 0; r < rows; r++) {
+          for (let c = 0; c < cols; c++) {
+            const x = c * SPACING, y = r * SPACING;
+            offCtx.moveTo(x + R_BASE, y);
+            offCtx.arc(x, y, R_BASE, 0, Math.PI * 2);
+          }
+        }
+        offCtx.fillStyle = 'rgba(20,20,20,0.12)';
+        offCtx.fill();
+      }
 
       function resize() {
         canvas.width  = canvas.offsetWidth;
         canvas.height = canvas.offsetHeight;
+        buildStatic();
+        if (!animating) {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.drawImage(off, 0, 0);
+        }
       }
       resize();
       window.addEventListener('resize', resize);
 
-      const hero = canvas.parentElement;
-      hero.addEventListener('mousemove', (e) => {
+      canvas.parentElement.addEventListener('mousemove', (e) => {
         const now = performance.now();
-        if (now - lastRipple < 60) return; // throttle
+        if (now - lastRipple < 50) return;
         lastRipple = now;
         const rect = canvas.getBoundingClientRect();
         ripples.push({ x: e.clientX - rect.left, y: e.clientY - rect.top, t: now });
-        if (ripples.length > 10) ripples.shift();
+        if (ripples.length > 8) ripples.shift();
+        if (!animating) { animating = true; requestAnimationFrame(draw); }
       });
 
       function draw(now) {
-        requestAnimationFrame(draw);
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        // Prune old ripples
+        // Prune dead ripples
         for (let i = ripples.length - 1; i >= 0; i--) {
-          if (now - ripples[i].t > 2200) ripples.splice(i, 1);
+          if (now - ripples[i].t > WAVE_LIFE) ripples.splice(i, 1);
         }
+
+        // Blit static frame
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(off, 0, 0);
+
+        if (ripples.length === 0) { animating = false; return; }
 
         const cols = Math.ceil(canvas.width  / SPACING) + 1;
         const rows = Math.ceil(canvas.height / SPACING) + 1;
 
+        // Build one Path2D per opacity bucket — reduces fill calls to BUCKETS
+        const paths = Array.from({ length: BUCKETS }, () => new Path2D());
+
         for (let r = 0; r < rows; r++) {
           for (let c = 0; c < cols; c++) {
-            const x = c * SPACING;
-            const y = r * SPACING;
+            const x = c * SPACING, y = r * SPACING;
 
-            let influence = 0;
+            let inf = 0;
             for (const rpl of ripples) {
-              const age  = (now - rpl.t) / 1000;          // seconds
-              const front = age * 200;                      // wave speed 200 px/s
+              const age   = (now - rpl.t) / 1000;
+              const front = age * WAVE_SPEED;
               const dist  = Math.hypot(x - rpl.x, y - rpl.y);
               const delta = dist - front;
-              const decay = Math.exp(-age * 1.0);
-              // Gaussian bell centered on wavefront
-              const w = Math.exp(-(delta * delta) / 350) * decay;
-              if (w > influence) influence = w;
+              const decay = Math.exp(-age * 1.2);
+              const w     = Math.exp(-(delta * delta) / 280) * decay;
+              if (w > inf) inf = w;
             }
 
-            const radius  = R_BASE + influence * (R_MAX - R_BASE);
-            const opacity = 0.1  + influence * 0.4;
+            if (inf < 0.015) continue;
 
-            ctx.beginPath();
-            ctx.arc(x, y, radius, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(20,20,20,${opacity.toFixed(3)})`;
-            ctx.fill();
+            const bi     = Math.min(BUCKETS - 1, Math.floor(inf * BUCKETS));
+            const radius = R_BASE + inf * (R_MAX - R_BASE);
+            paths[bi].moveTo(x + radius, y);
+            paths[bi].arc(x, y, radius, 0, Math.PI * 2);
           }
         }
+
+        // One fill call per bucket
+        for (let i = 0; i < BUCKETS; i++) {
+          const inf = (i + 0.5) / BUCKETS;
+          ctx.fillStyle = `rgba(20,20,20,${(0.12 + inf * 0.38).toFixed(2)})`;
+          ctx.fill(paths[i]);
+        }
+
+        requestAnimationFrame(draw);
       }
-      requestAnimationFrame(draw);
     })();
   </script>
   <script src="animations.js"></script>
