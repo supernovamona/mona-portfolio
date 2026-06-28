@@ -2313,7 +2313,23 @@ img.analyst-notebooks {
 }
 
 .ds-checkbox--indeterminate {
-  accent-color: #008489;
+  appearance: none;
+  -webkit-appearance: none;
+  background: #fff;
+  border: 1.5px solid rgba(20,20,20,0.35);
+  border-radius: 2px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.ds-checkbox--indeterminate::after {
+  content: '';
+  width: 7px;
+  height: 7px;
+  background: #008489;
+  border-radius: 1px;
+  display: block;
 }
 
 /* Nav items */

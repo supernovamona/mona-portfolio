@@ -451,7 +451,7 @@
                   <span>Checked</span>
                 </label>
                 <label class="ds-checkbox-label">
-                  <input type="checkbox" class="ds-checkbox ds-checkbox--indeterminate" />
+                  <span class="ds-checkbox ds-checkbox--indeterminate" aria-checked="mixed"></span>
                   <span>Indeterminate</span>
                 </label>
                 <label class="ds-checkbox-label ds-checkbox-label--disabled">
@@ -526,6 +526,10 @@
   </div>
 
   <script>
+    document.querySelectorAll('.ds-checkbox--indeterminate').forEach(el => {
+      el.indeterminate = true;
+    });
+
     const header = document.getElementById('site-header');
     window.addEventListener('scroll', () => {
       header.style.boxShadow = window.scrollY > 10 ? '0 2px 20px rgba(0,0,0,0.06)' : '';
