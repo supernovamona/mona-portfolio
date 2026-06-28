@@ -2305,24 +2305,41 @@ img.analyst-notebooks {
 .ds-checkbox-label--disabled { color: rgba(20,20,20,0.35); }
 
 .ds-checkbox {
-  width: 15px;
-  height: 15px;
-  accent-color: #008489;
-  cursor: default;
-  flex-shrink: 0;
-}
-
-.ds-checkbox--indeterminate {
   appearance: none;
   -webkit-appearance: none;
+  width: 15px;
+  height: 15px;
   background: #fff;
-  border: 1.5px solid rgba(20,20,20,0.35);
+  border: 1px solid #d0d5dd;
   border-radius: 2px;
+  cursor: default;
+  flex-shrink: 0;
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
 }
+
+.ds-checkbox:checked {
+  background: #008489;
+  border-color: #008489;
+}
+.ds-checkbox:checked::after {
+  content: '';
+  width: 4px;
+  height: 8px;
+  margin-top: -1px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  display: block;
+}
+
+.ds-checkbox:disabled {
+  background: #f2f4f7;
+  border-color: #e4e7ec;
+}
+
 .ds-checkbox--indeterminate::after {
   content: '';
   width: 7px;
